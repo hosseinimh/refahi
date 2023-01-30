@@ -27,8 +27,6 @@ export const init = (dispatch, navigate) => {
 };
 
 export const onLoad = (params) => {
-    _dispatch(setTitleAction(strings._title));
-    setCityId(params?.cityId);
     _pageProps = {
         pageNumber: 1,
         itemsCount: 0,
@@ -38,6 +36,10 @@ export const onLoad = (params) => {
         action: null,
     };
 
+    _dispatch(setTitleAction(strings._title));
+    _dispatch(setPagePropsAction(_pageProps));
+
+    setCityId(params?.cityId);
     fillForm();
 };
 
@@ -113,7 +115,10 @@ const fetchCity = async () => {
 };
 
 const fetchMciCenters = async (data = null) => {
-    let result = await _entity.getPaginate(_cityId);
+    let result = await _entity.getPaginate(
+        _cityId,
+        _ls?.pageProps?.pageNumber ?? 1
+    );
 
     if (result === null) {
         _dispatch(setPagePropsAction({ items: null }));

@@ -52,7 +52,7 @@ const MciCenters = () => {
         if (_ls?.loading) {
             return;
         }
-
+        console.log(_ls?.pageProps);
         let pagesCount = Math.ceil(_ls?.pageProps?.itemsCount / 10);
         let prevStatus = _ls?.pageProps?.pageNumber === 1 ? "disabled" : "";
         let nextStatus =
