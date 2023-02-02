@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EquipmentController;
+use App\Http\Controllers\EquipmentTypeController;
 use App\Http\Controllers\MciCenterController;
 use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\UserController;
@@ -32,8 +34,20 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
 
     Route::post('mci_centers/show/{model}', [MciCenterController::class, 'show']);
     Route::post('mci_centers/{city}', [MciCenterController::class, 'index']);
-});
+    Route::post('mci_centers/store/{city}', [MciCenterController::class, 'store']);
+    Route::post('mci_centers/update/{model}', [MciCenterController::class, 'update']);
 
+    Route::post('equipment_types/show/{model}', [EquipmentTypeController::class, 'show']);
+    Route::post('equipment_types', [EquipmentTypeController::class, 'index']);
+    Route::post('equipment_types/all', [EquipmentTypeController::class, 'getAll']);
+    Route::post('equipment_types/store', [EquipmentTypeController::class, 'store']);
+    Route::post('equipment_types/update/{model}', [EquipmentTypeController::class, 'update']);
+
+    Route::post('equipments/show/{model}', [EquipmentController::class, 'show']);
+    Route::post('equipments', [EquipmentController::class, 'index']);
+    Route::post('equipments/store/{equipmentType}', [EquipmentController::class, 'store']);
+    Route::post('equipments/update/{model}/{equipmentType}', [EquipmentController::class, 'update']);
+});
 
 // 'user' type users
 Route::middleware(['auth:sanctum', 'auth.user'])->group(function () {

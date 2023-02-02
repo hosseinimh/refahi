@@ -5,6 +5,7 @@ import AlertMessage from "./AlertMessage";
 import AlertState from "./AlertState";
 import Table from "./Table";
 import TableItems from "./TableItems";
+import TableFooter from "./TableFooter";
 import LoginHeader from "./LoginHeader";
 import LoginFooter from "./LoginFooter";
 import NumberInput from "./NumberInput";
@@ -24,6 +25,7 @@ export {
     AlertState,
     Table,
     TableItems,
+    TableFooter,
     LoginHeader,
     LoginFooter,
     NumberInput,

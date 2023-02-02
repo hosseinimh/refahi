@@ -99,20 +99,114 @@ function Sidebar() {
 
     const renderAdminLinks = () => (
         <>
-            <li className="nav-item">
-                <Link
-                    className={
-                        page === "Users" ? "nav-link active" : "nav-link"
-                    }
-                    to={`${basePath}/users`}
-                >
+            <li className="nav-group" aria-expanded="false">
+                <a className="nav-link nav-group-toggle" href="#">
                     <svg className="nav-icon">
                         <use
                             xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-group`}
                         ></use>
                     </svg>
                     {strings.users}
-                </Link>
+                </a>
+                <ul className="nav-group-items">
+                    <li className="nav-item">
+                        <Link
+                            className={
+                                page === "Users"
+                                    ? "nav-link active"
+                                    : "nav-link"
+                            }
+                            to={`${basePath}/users`}
+                        >
+                            <svg className="nav-icon">
+                                <use
+                                    xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-group`}
+                                ></use>
+                            </svg>
+                            {strings.users}
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link
+                            className={
+                                page === "ViewUser"
+                                    ? "nav-link active"
+                                    : "nav-link"
+                            }
+                            to={`${basePath}/users/view`}
+                        >
+                            <svg className="nav-icon">
+                                <use
+                                    xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-user`}
+                                ></use>
+                            </svg>
+                            {strings.viewUser}
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link
+                            className={
+                                page === "ChangePassword"
+                                    ? "nav-link active"
+                                    : "nav-link"
+                            }
+                            to={`${basePath}/users/change_password`}
+                        >
+                            <svg className="nav-icon">
+                                <use
+                                    xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-pencil`}
+                                ></use>
+                            </svg>
+                            {strings.changePassword}
+                        </Link>
+                    </li>
+                </ul>
+            </li>
+            <li className="nav-group" aria-expanded="false">
+                <a className="nav-link nav-group-toggle" href="#">
+                    <svg className="nav-icon">
+                        <use
+                            xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-group`}
+                        ></use>
+                    </svg>
+                    {strings.equipments}
+                </a>
+                <ul className="nav-group-items">
+                    <li className="nav-item">
+                        <Link
+                            className={
+                                page === "EquipmentTypes"
+                                    ? "nav-link active"
+                                    : "nav-link"
+                            }
+                            to={`${basePath}/equipment_types`}
+                        >
+                            <svg className="nav-icon">
+                                <use
+                                    xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-group`}
+                                ></use>
+                            </svg>
+                            {strings.equipmentTypes}
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link
+                            className={
+                                page === "Equipments"
+                                    ? "nav-link active"
+                                    : "nav-link"
+                            }
+                            to={`${basePath}/equipments`}
+                        >
+                            <svg className="nav-icon">
+                                <use
+                                    xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-group`}
+                                ></use>
+                            </svg>
+                            {strings.equipments}
+                        </Link>
+                    </li>
+                </ul>
             </li>
             <li className="nav-item">
                 <Link
@@ -132,40 +226,7 @@ function Sidebar() {
         </>
     );
 
-    const renderUserLinks = () => (
-        <>
-            <li className="nav-item">
-                <Link
-                    className={
-                        page === "Documents" ? "nav-link active" : "nav-link"
-                    }
-                    to={`${basePath}/documents`}
-                >
-                    <svg className="nav-icon">
-                        <use
-                            xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-layers`}
-                        ></use>
-                    </svg>
-                    {strings.documents}
-                </Link>
-            </li>
-            <li className="nav-item">
-                <Link
-                    className={
-                        page === "Tickets" ? "nav-link active" : "nav-link"
-                    }
-                    to={`${basePath}/tickets`}
-                >
-                    <svg className="nav-icon">
-                        <use
-                            xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-layers`}
-                        ></use>
-                    </svg>
-                    {strings.tickets}
-                </Link>
-            </li>
-        </>
-    );
+    const renderUserLinks = () => <></>;
 
     return (
         <>
@@ -212,40 +273,6 @@ function Sidebar() {
                     {lsUser?.role === USER_ROLES.ADMINISTRATOR &&
                         renderAdminLinks()}
                     {lsUser?.role === USER_ROLES.USER && renderUserLinks()}
-                    <li className="nav-item">
-                        <Link
-                            className={
-                                page === "ViewUser"
-                                    ? "nav-link active"
-                                    : "nav-link"
-                            }
-                            to={`${basePath}/users/view`}
-                        >
-                            <svg className="nav-icon">
-                                <use
-                                    xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-user`}
-                                ></use>
-                            </svg>
-                            {strings.viewUser}
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link
-                            className={
-                                page === "ChangePassword"
-                                    ? "nav-link active"
-                                    : "nav-link"
-                            }
-                            to={`${basePath}/users/change_password`}
-                        >
-                            <svg className="nav-icon">
-                                <use
-                                    xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-pencil`}
-                                ></use>
-                            </svg>
-                            {strings.changePassword}
-                        </Link>
-                    </li>
                     <li className="nav-item">
                         <CustomLink className="nav-link" onClick={onLogout}>
                             <svg className="nav-icon">

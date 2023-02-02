@@ -13,6 +13,20 @@ class EquipmentResource extends JsonResource
             'id' => intval($this->id),
             'name' => Helper::localeNumbers($this->name) ?? '',
             'equipmentTypeId' => intval($this->equipment_type_id),
+            'equipmentName' => Helper::localeNumbers($this->equipment_name) ?? '',
+            'equipmentType' => intval($this->equipment_type),
+            'equipmentTypeText' => $this->getTypeText(intval($this->equipment_type)),
         ];
+    }
+
+    private function getTypeText(int $type)
+    {
+        $text = __('equipment_type.type_undefined');
+
+        if ($type >= 1 && $type <= 8) {
+            $text = __('equipment_type.type_' . $type);
+        }
+
+        return $text;
     }
 }

@@ -55,6 +55,34 @@ export const onLayoutState = () => {
 
         return;
     }
+
+    if (_ls?.pageProps?.action) {
+        _dispatch(setPagePropsAction({ action: null }));
+    }
+
+    switch (_ls?.pageProps?.action) {
+        case "ADD":
+            addAction();
+
+            return;
+        case "EDIT":
+            editAction(_ls?.pageProps?.item);
+
+            return;
+    }
+};
+
+export const onAdd = () => {
+    _dispatch(setPagePropsAction({ action: "ADD" }));
+};
+
+export const onEdit = (item) => {
+    _dispatch(
+        setPagePropsAction({
+            action: "EDIT",
+            item,
+        })
+    );
 };
 
 export const setPage = (page) => {
@@ -63,6 +91,16 @@ export const setPage = (page) => {
 
 const setCityId = (cityId) => {
     _cityId = !isNaN(cityId) && cityId > 0 ? cityId : 0;
+};
+
+const addAction = () => {
+    _navigate(`${basePath}/mci_centers/add/${_cityId}`);
+};
+
+const editAction = (item) => {
+    if (!isNaN(item?.id) && item?.id > 0) {
+        _navigate(`${basePath}/mci_centers/edit/${item.id}`);
+    }
 };
 
 const fillForm = async (data = null) => {

@@ -13,15 +13,55 @@ import {
     setRenderMessageAction,
 } from "../../../state/message/messageActions";
 import { clearLogoutAction } from "../../../state/user/userActions";
-import { AlertMessage, LoginFooter, LoginHeader } from "../../components";
+import {
+    AlertMessage,
+    AlertState,
+    LoginFooter,
+    LoginHeader,
+} from "../../components";
 import utils from "../../../utils/Utils";
+import { general } from "../../../constants/strings";
 
-const LoginPage = ({ children, page, errors = null }) => {
+const LoginPage = ({
+    children,
+    page,
+    strings,
+    errors = null,
+    handleSubmit,
+    funcs,
+}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const messageState = useSelector((state) => state.messageReducer);
+    const _ls = useSelector((state) => state.layoutReducer);
+    const _ms = useSelector((state) => state.messageReducer);
+    const _us = useSelector((state) => state.userReducer);
     const [globalMessage, setGlobalMessage] = useState(null);
     const [message, setMessage] = useState(null);
+
+    funcs.init(dispatch, navigate);
+
+    useEffect(() => {
+        funcs.onLayoutState();
+    }, [_ls]);
+
+    useEffect(() => {
+        if (_ms?.messageType === MESSAGE_TYPES.SUCCESS) {
+            setMessage(_ms);
+        }
+    }, [_ms]);
+
+    useEffect(() => {
+        if (_us?.error) {
+            dispatch(setLoadingAction(false));
+            dispatch(
+                setMessageAction(
+                    _us?.error,
+                    MESSAGE_TYPES.ERROR,
+                    MESSAGE_CODES.FORM_INPUT_INVALID
+                )
+            );
+        }
+    }, [_us]);
 
     useEffect(() => {
         if (typeof errors === "object" && errors) {
@@ -42,12 +82,6 @@ const LoginPage = ({ children, page, errors = null }) => {
     }, [errors]);
 
     useEffect(() => {
-        if (messageState?.messageType === MESSAGE_TYPES.SUCCESS) {
-            setMessage(messageState);
-        }
-    }, [messageState]);
-
-    useEffect(() => {
         window.scrollTo(0, 0);
 
         if (utils.getLSUser()) {
@@ -61,7 +95,7 @@ const LoginPage = ({ children, page, errors = null }) => {
         dispatch(setRenderMessageAction());
         dispatch(setLoadingAction(false));
 
-        if (messageState?.messageField || messageState?.messageRender) {
+        if (_ms?.messageField || _ms?.messageRender) {
             dispatch(clearMessageAction());
         }
 
@@ -101,7 +135,34 @@ const LoginPage = ({ children, page, errors = null }) => {
                                 />
                             </div>
                         )}
-                        {children}
+                        <div className="col-lg-8">
+                            <div className="card-group d-block d-md-flex row">
+                                <div className="card col-md-7 p-4 mb-0">
+                                    <div className="card-body">
+                                        <h1>{strings._title}</h1>
+                                        <p className="text-medium-emphasis">
+                                            {strings.description}
+                                        </p>
+                                        <AlertState />
+                                        {children}
+                                        <div className="row">
+                                            <div className="col-6">
+                                                <button
+                                                    onClick={handleSubmit(
+                                                        funcs.onSubmit
+                                                    )}
+                                                    className="btn btn-success px-4"
+                                                    type="button"
+                                                    disabled={_ls?.loading}
+                                                >
+                                                    {general.submit}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

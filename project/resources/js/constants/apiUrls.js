@@ -32,6 +32,16 @@ export const CITIES_API_URLS = {
 export const MCI_CENTERS_API_URLS = {
     FETCH_MCI_CENTER: `${SERVER_URL}/mci_centers/show`,
     FETCH_MCI_CENTERS: `${SERVER_URL}/mci_centers`,
+    STORE_MCI_CENTER: `${SERVER_URL}/mci_centers/store`,
+    UPDATE_MCI_CENTER: `${SERVER_URL}/mci_centers/update`,
+};
+
+export const EQUIPMENT_TYPES_API_URLS = {
+    FETCH_EQUIPMENT_TYPE: `${SERVER_URL}/equipment_types/show`,
+    FETCH_EQUIPMENT_TYPES: `${SERVER_URL}/equipment_types`,
+    FETCH_ALL_EQUIPMENT_TYPES: `${SERVER_URL}/equipment_types/all`,
+    STORE_EQUIPMENT_TYPE: `${SERVER_URL}/equipment_types/store`,
+    UPDATE_EQUIPMENT_TYPE: `${SERVER_URL}/equipment_types/update`,
 };
 
 export const EQUIPMENTS_API_URLS = {

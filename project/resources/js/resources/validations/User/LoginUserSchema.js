@@ -1,5 +1,8 @@
 import * as yup from "yup";
-import { validation, loginPage as strings } from "../../../constants/strings";
+import {
+    validation,
+    loginUserPage as strings,
+} from "../../../constants/strings";
 
 const loginUserSchema = yup.object().shape({
     username: yup

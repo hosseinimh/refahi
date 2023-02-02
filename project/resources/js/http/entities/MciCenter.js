@@ -19,4 +19,24 @@ export class MciCenter extends Entity {
     async get(id) {
         return await this.handlePost(API_URLS.FETCH_MCI_CENTER + "/" + id);
     }
+
+    async store(cityId, name, tel, address, longitude, latitude) {
+        return await this.handlePost(API_URLS.STORE_MCI_CENTER + "/" + cityId, {
+            name,
+            tel,
+            address,
+            longitude,
+            latitude,
+        });
+    }
+
+    async update(id, name, tel, address, longitude, latitude) {
+        return await this.handlePost(API_URLS.UPDATE_MCI_CENTER + "/" + id, {
+            name,
+            tel,
+            address,
+            longitude,
+            latitude,
+        });
+    }
 }

@@ -18,7 +18,7 @@ const Header = () => {
     const userTitle = () => {
         let title =
             lsUser?.role === USER_ROLES.ADMINISTRATOR
-                ? general.admin
+                ? general.administrator
                 : general.user;
 
         title += `: [ ${lsUser?.username} ]`;

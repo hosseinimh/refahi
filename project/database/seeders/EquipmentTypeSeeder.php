@@ -14,6 +14,8 @@ class EquipmentTypeSeeder extends Seeder
      */
     public function run()
     {
-        EquipmentType::factory()->count(10)->create();
+        foreach (range(1, 10) as $index) {
+            EquipmentType::factory()->create(['type' => rand(1, 8)]);
+        }
     }
 }

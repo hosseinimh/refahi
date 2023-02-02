@@ -6,8 +6,9 @@ const InputTextColumn = ({
     type = "text",
     placeholder = null,
     register,
-    columnClassName = "col-12 pb-4",
+    columnClassName = "col-md-4 col-sm-12 pb-4",
     strings,
+    icon = null,
 }) => {
     const _ls = useSelector((state) => state.layoutReducer);
     const _ms = useSelector((state) => state.messageReducer);
@@ -19,20 +20,44 @@ const InputTextColumn = ({
             <label className="form-label" htmlFor={field}>
                 {strings[field]}
             </label>
-            <input
-                {...register(`${field}`)}
-                className={
-                    _ms?.messageField === field
-                        ? "form-control is-invalid"
-                        : "form-control"
-                }
-                id={field}
-                placeholder={placeholder}
-                disabled={_ls?.loading}
-                type={type}
-            />
-            {_ms?.messageField === field && (
-                <div className="invalid-feedback">{_ms?.message}</div>
+            {icon && (
+                <div className="input-group has-validation mb-2">
+                    <span className="input-group-text">{icon}</span>
+                    <input
+                        {...register(`${field}`)}
+                        className={
+                            _ms?.messageField === field
+                                ? "form-control is-invalid"
+                                : "form-control"
+                        }
+                        id={field}
+                        placeholder={placeholder}
+                        disabled={_ls?.loading}
+                        type={type}
+                    />
+                    {_ms?.messageField === field && (
+                        <div className="invalid-feedback">{_ms?.message}</div>
+                    )}
+                </div>
+            )}
+            {!icon && (
+                <>
+                    <input
+                        {...register(field)}
+                        className={
+                            _ms?.messageField === field
+                                ? "form-control is-invalid"
+                                : "form-control"
+                        }
+                        id={field}
+                        placeholder={placeholder}
+                        disabled={_ls?.loading}
+                        type={type}
+                    />
+                    {_ms?.messageField === field && (
+                        <div className="invalid-feedback">{_ms?.message}</div>
+                    )}
+                </>
             )}
         </div>
     );

@@ -3,7 +3,6 @@
 namespace App\Http\Requests\User;
 
 use App\Constants\ErrorCode;
-use App\Repositories\CityService;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;

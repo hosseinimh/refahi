@@ -60,8 +60,40 @@ function AuthRoute() {
                                         element={<Pages.Cities />}
                                     />
                                     <Route
+                                        path={`${basePath}/mci_centers/add/:cityId`}
+                                        element={<Pages.AddMciCenter />}
+                                    />
+                                    <Route
+                                        path={`${basePath}/mci_centers/edit/:mciCenterId`}
+                                        element={<Pages.EditMciCenter />}
+                                    />
+                                    <Route
                                         path={`${basePath}/mci_centers/:cityId`}
                                         element={<Pages.MciCenters />}
+                                    />
+                                    <Route
+                                        path={`${basePath}/equipment_types/add`}
+                                        element={<Pages.AddEquipmentType />}
+                                    />
+                                    <Route
+                                        path={`${basePath}/equipment_types/edit/:equipmentTypeId`}
+                                        element={<Pages.EditEquipmentType />}
+                                    />
+                                    <Route
+                                        path={`${basePath}/equipment_types`}
+                                        element={<Pages.EquipmentTypes />}
+                                    />
+                                    <Route
+                                        path={`${basePath}/equipments/add`}
+                                        element={<Pages.AddEquipment />}
+                                    />
+                                    <Route
+                                        path={`${basePath}/equipments/edit/:equipmentId`}
+                                        element={<Pages.EditEquipment />}
+                                    />
+                                    <Route
+                                        path={`${basePath}/equipments`}
+                                        element={<Pages.Equipments />}
                                     />
                                 </>
                             )}

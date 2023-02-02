@@ -23,7 +23,7 @@ const Cities = () => {
     const renderItems = () => {
         const children = _ls?.pageProps?.items?.map((item, index) => (
             <React.Fragment key={item.id}>
-                <tr key={item.id}>
+                <tr>
                     <td scope="row">{utils.en2faDigits(index + 1)}</td>
                     <td>{item.name}</td>
                 </tr>

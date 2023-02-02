@@ -16,6 +16,7 @@ class CreateTblEquipmentTypesTable extends Migration
         Schema::create('tbl_equipment_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->unsignedTinyInteger('type');
             $table->timestamps();
             $table->softDeletes();
         });

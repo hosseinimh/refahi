@@ -13,7 +13,7 @@ export const general = {
     previous: "قبلی",
     next: "بعدی",
     last: "آخرین",
-    records: "رکورد(ها)",
+    records: "رکورد",
     actions: "عملیات",
     yes: "بله",
     no: "خیر",
@@ -81,6 +81,7 @@ export const sidebar = {
     editProfile: "ویرایش پروفایل",
     users: "کاربران",
     provinces: "استان‌ها",
+    equipmentTypes: "نوع تجهیزات",
     equipments: "تجهیزات",
     changePassword: "تغییر کلمه عبور",
     editUser: "ویرایش کاربر",
@@ -88,16 +89,16 @@ export const sidebar = {
     logout: "خروج کاربری",
 };
 
-export const loginPage = {
+export const dashboardPage = {
+    _title: "داشبورد",
+    users: "کاربران",
+};
+
+export const loginUserPage = {
     _title: "ورود کاربری",
     description: "لطفا نام کاربری و کلمه عبور خود را وارد نمائید.",
     username: "نام کاربری",
     password: "کلمه عبور",
-};
-
-export const dashboardPage = {
-    _title: "داشبورد",
-    users: "کاربران",
 };
 
 export const usersPage = {
@@ -164,4 +165,102 @@ export const citiesPage = {
 export const mciCentersPage = {
     _title: "مراکز مخابرات",
     name: "نام",
+    tel: "تلفن",
+    address: "آدرس",
+    add: "افزودن مرکز مخابرات",
+};
+
+export const addMciCenterPage = {
+    _title: "افزودن مرکز مخابرات",
+    name: "نام",
+    namePlaceholder: "نام",
+    tel: "تلفن",
+    telPlaceholder: "تلفن",
+    address: "آدرس",
+    addressPlaceholder: "آدرس",
+    latitude: "عرض جغرافیایی",
+    latitudePlaceholder: "عرض جغرافیایی",
+    longitude: "طول جغرافیایی",
+    longitudePlaceholder: "طول جغرافیایی",
+    submit: "ثبت",
+    submitted: "افزودن مرکز مخابرات با موفقیت انجام شد.",
+};
+
+export const editMciCenterPage = {
+    _title: "ویرایش مرکز مخابرات",
+    name: "نام",
+    namePlaceholder: "نام",
+    tel: "تلفن",
+    telPlaceholder: "تلفن",
+    address: "آدرس",
+    addressPlaceholder: "آدرس",
+    latitude: "عرض جغرافیایی",
+    latitudePlaceholder: "عرض جغرافیایی",
+    longitude: "طول جغرافیایی",
+    longitudePlaceholder: "طول جغرافیایی",
+    submit: "ویرایش",
+    submitted: "ویرایش مرکز مخابرات با موفقیت انجام شد.",
+};
+
+export const equipmentTypes = {
+    type1: "آشپزخانه",
+    type2: "پذیرایی",
+    type3: "اتاق خواب",
+    type4: "سرویس‌ها",
+    type5: "تجهیزات اداری",
+    type6: "تجهیزات محوطه",
+    type7: "سیستم گرمایشی",
+    type8: "سیستم سرمایشی",
+};
+
+export const equipmentTypesPage = {
+    _title: "نوع تجهیزات",
+    name: "نام",
+    type: "نوع",
+    add: "افزودن نوع تجهیزات",
+};
+
+export const addEquipmentTypePage = {
+    _title: "افزودن نوع تجهیزات",
+    name: "نام",
+    namePlaceholder: "نام",
+    type: "نوع",
+    submit: "ثبت",
+    submitted: "افزودن نوع تجهیزات با موفقیت انجام شد.",
+};
+
+export const editEquipmentTypePage = {
+    _title: "ویرایش نوع تجهیزات",
+    name: "نام",
+    namePlaceholder: "نام",
+    type: "نوع",
+    submit: "ویرایش",
+    submitted: "ویرایش نوع تجهیزات با موفقیت انجام شد.",
+};
+
+export const equipmentsPage = {
+    _title: "تجهیزات",
+    name: "نام",
+    type: "نوع",
+    add: "افزودن تجهیزات",
+};
+
+export const addEquipmentPage = {
+    _title: "افزودن تجهیزات",
+    name: "نام",
+    namePlaceholder: "نام",
+    equipmentType: "دسته‌بندی تجهیزات",
+    type: "نوع تجهیزات",
+    submit: "ثبت",
+    submitted: "افزودن تجهیزات با موفقیت انجام شد.",
+};
+
+export const editEquipmentPage = {
+    _title: "ویرایش تجهیزات",
+    name: "نام",
+    namePlaceholder: "نام",
+    equipmentType: "دسته‌بندی تجهیزات",
+    type: "نوع",
+    submit: "ویرایش",
+    submitted: "ویرایش تجهیزات با موفقیت انجام شد.",
 };
