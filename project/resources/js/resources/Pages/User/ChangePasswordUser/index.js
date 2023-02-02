@@ -2,17 +2,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import {
-    InputSelectColumn,
-    InputTextColumn,
-    SubmitCancelForm,
-} from "../../../components";
+import { InputTextColumn, SubmitCancelForm } from "../../../components";
 import * as funcs from "./funcs";
-import { addEquipmentTypePage as strings } from "../../../../constants/strings";
-import { addEquipmentTypeSchema as schema } from "../../../validations";
-import { equipmentTypes } from "../../../../constants";
+import { changePasswordUserPage as strings } from "../../../../constants/strings";
+import { changePasswordUserSchema as schema } from "../../../validations";
 
-const AddEquipmentType = () => {
+const ChangePasswordUser = () => {
     const {
         register,
         handleSubmit,
@@ -23,27 +18,25 @@ const AddEquipmentType = () => {
 
     return (
         <SubmitCancelForm
-            page={"EquipmentTypes"}
+            page={"Users"}
             funcs={funcs}
             handleSubmit={handleSubmit}
             errors={errors}
         >
             <InputTextColumn
-                field="name"
+                field="newPassword"
+                type="password"
                 register={register}
                 strings={strings}
-                columnClassName="col-md-8 col-sm-12 pb-4"
             />
-            <InputSelectColumn
-                field="type"
+            <InputTextColumn
+                field="confirmPassword"
+                type="password"
                 register={register}
                 strings={strings}
-                items={equipmentTypes}
-                keyItem={"id"}
-                valueItem={"value"}
             />
         </SubmitCancelForm>
     );
 };
 
-export default AddEquipmentType;
+export default ChangePasswordUser;

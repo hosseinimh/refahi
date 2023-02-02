@@ -1,10 +1,10 @@
 import * as yup from "yup";
 import {
     validation,
-    changePasswordPage as strings,
+    changePasswordUserPage as strings,
 } from "../../../constants/strings";
 
-const changePasswordSchema = yup.object().shape({
+const changePasswordUserSchema = yup.object().shape({
     newPassword: yup
         .string(validation.stringMessage.replace(":field", strings.newPassword))
         .min(
@@ -38,4 +38,4 @@ const changePasswordSchema = yup.object().shape({
         ),
 });
 
-export default changePasswordSchema;
+export default changePasswordUserSchema;

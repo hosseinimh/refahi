@@ -143,7 +143,7 @@ export const editUserPage = {
     submitted: "ویرایش کاربر با موفقیت انجام گردید.",
 };
 
-export const changePasswordPage = {
+export const changePasswordUserPage = {
     _title: "تغییر کلمه عبور",
     newPassword: "کلمه عبور جدید",
     confirmPassword: "تایید کلمه عبور جدید",

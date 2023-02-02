@@ -48,6 +48,10 @@ function AuthRoute() {
                                         element={<Navigate to={basePath} />}
                                     />
                                     <Route
+                                        path={`${basePath}/users/change_password/:userId`}
+                                        element={<Pages.ChangePasswordUser />}
+                                    />
+                                    <Route
                                         path={`${basePath}/users`}
                                         element={<Pages.Users />}
                                     />

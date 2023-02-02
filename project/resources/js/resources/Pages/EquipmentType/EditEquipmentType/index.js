@@ -8,23 +8,9 @@ import {
     SubmitCancelForm,
 } from "../../../components";
 import * as funcs from "./funcs";
-import {
-    editEquipmentTypePage as strings,
-    equipmentTypes,
-} from "../../../../constants/strings";
+import { editEquipmentTypePage as strings } from "../../../../constants/strings";
 import { editEquipmentTypeSchema as schema } from "../../../validations";
-import { EQUIPMENT_TYPES } from "../../../../constants";
-
-const types = [
-    { id: EQUIPMENT_TYPES.TYPE_1, value: equipmentTypes.type1 },
-    { id: EQUIPMENT_TYPES.TYPE_2, value: equipmentTypes.type2 },
-    { id: EQUIPMENT_TYPES.TYPE_3, value: equipmentTypes.type3 },
-    { id: EQUIPMENT_TYPES.TYPE_4, value: equipmentTypes.type4 },
-    { id: EQUIPMENT_TYPES.TYPE_5, value: equipmentTypes.type5 },
-    { id: EQUIPMENT_TYPES.TYPE_6, value: equipmentTypes.type6 },
-    { id: EQUIPMENT_TYPES.TYPE_7, value: equipmentTypes.type7 },
-    { id: EQUIPMENT_TYPES.TYPE_8, value: equipmentTypes.type8 },
-];
+import { equipmentTypes } from "../../../../constants";
 
 const EditEquipmentType = () => {
     const {
@@ -54,7 +40,7 @@ const EditEquipmentType = () => {
                 field="type"
                 register={register}
                 strings={strings}
-                items={types}
+                items={equipmentTypes}
                 keyItem={"id"}
                 valueItem={"value"}
             />

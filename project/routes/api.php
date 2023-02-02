@@ -20,11 +20,11 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
     Route::post('dashboard/review_admin', [DashboardController::class, 'reviewAdmin']);
 
     Route::post('users', [UserController::class, 'index']);
-    Route::post('users/show/{user}', [UserController::class, 'showAdmin']);
+    Route::post('users/show/{model}', [UserController::class, 'showAdmin']);
     Route::post('users/store/{unit}', [UserController::class, 'store']);
     Route::post('users/store_admin', [UserController::class, 'storeAdmin']);
     Route::post('users/update/{user}', [UserController::class, 'update']);
-    Route::post('users/change_password/{user}', [UserController::class, 'changePassword']);
+    Route::post('users/change_password/{model}', [UserController::class, 'changePassword']);
 
     Route::post('provinces/show/{model}', [ProvinceController::class, 'show']);
     Route::post('provinces', [ProvinceController::class, 'index']);

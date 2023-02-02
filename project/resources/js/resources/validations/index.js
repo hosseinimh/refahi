@@ -2,7 +2,7 @@ import loginUserSchema from "./User/LoginUserSchema";
 import userSearchSchema from "./User/UserSearchSchema";
 import addUserSchema from "./User/AddUserSchema";
 import editUserSchema from "./User/EditUserSchema";
-import changePasswordSchema from "./User/ChangePasswordSchema";
+import changePasswordUserSchema from "./User/ChangePasswordUserSchema";
 import addMciCenterSchema from "./MciCenter/AddMciCenterSchema";
 import editMciCenterSchema from "./MciCenter/EditMciCenterSchema";
 import addEquipmentTypeSchema from "./EquipmentType/AddEquipmentTypeSchema";
@@ -15,7 +15,7 @@ export {
     userSearchSchema,
     addUserSchema,
     editUserSchema,
-    changePasswordSchema,
+    changePasswordUserSchema,
     addMciCenterSchema,
     editMciCenterSchema,
     addEquipmentTypeSchema,

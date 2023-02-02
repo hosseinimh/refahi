@@ -14,7 +14,7 @@ class UserService
             Model::leftJoin('tbl_cities', function ($join) {
                 $join->on('tbl_users.city_id', '=', 'tbl_cities.id')
                     ->join('tbl_provinces', 'tbl_cities.province_id', '=', 'tbl_provinces.id');
-            })->where('id', $id)->select('tbl_users.*', 'tbl_cities.name AS city_name', 'tbl_provinces.name AS province_name')->first();
+            })->where('tbl_users.id', $id)->select('tbl_users.*', 'tbl_cities.name AS city_name', 'tbl_provinces.name AS province_name')->first();
     }
 
     public function getPaginate(string|null $username, string|null $name, string|null $family, int|null $cityId, int $page, int $pageItems): mixed
