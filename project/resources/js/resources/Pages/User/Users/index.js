@@ -78,7 +78,6 @@ const Users = () => {
             renderFooter={() => (
                 <TableFooter columnsCount={_columnsCount} funcs={funcs} />
             )}
-            hasAdd={false}
             strings={strings}
             funcs={funcs}
         />

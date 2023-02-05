@@ -63,6 +63,7 @@ export const validation = {
     gteMessage: "مقدار فیلد :field، باید برابر یا بزرگتر از :min باشد.",
     maxMessage: "حداکثر طول فیلد :field، :max حرف است.",
     maxDigitMessage: "حداکثر طول فیلد :field، :max رقم است.",
+    exactDigitMessage: "طول فیلد :field، :digit رقم است.",
     requiredMessage: "لطفا :field را وارد نمایید.",
     validMessage: "لطفا :field را به درستی وارد نمایید.",
     confirmedMessage: ":field با تاییدیه اش مطابقت نمی نماید.",
@@ -110,6 +111,7 @@ export const usersPage = {
     addUser: "افزودن کاربر",
     searchSubmit: "جستجو",
     changePassword: "تغییر کلمه عبور",
+    add: "افزودن کاربر",
 };
 
 export const viewUserPage = {
@@ -123,12 +125,30 @@ export const addUserPage = {
     _title: "افزودن کاربر",
     username: "نام کاربری",
     usernamePlaceholder: "نام کاربری",
+    password: "کلمه عبور",
+    confirmPassword: "تاییدیه کلمه عبور",
     name: "نام",
     namePlaceholder: "نام",
     family: "نام خانوادگی",
     familyPlaceholder: "نام خانوادگی",
-    password: "کلمه عبور",
-    confirmPassword: "تاییدیه کلمه عبور",
+    nationalCode: "کد ملی",
+    nationalCodePlaceholder: "کد ملی",
+    mobile: "شماره همراه",
+    mobilePlaceholder: "شماره همراه",
+    email: "پست الکترونیک",
+    emailPlaceholder: "پست الکترونیک",
+    gender: "جنسیت",
+    male: "مرد",
+    female: "زن",
+    status: "وضعیت",
+    active: "فعال",
+    type: "نوع کاربری",
+    administrator: "مدیر",
+    user: "کاربر",
+    city: "شهر",
+    selectCity: "انتخاب شهر",
+    noCity: "یک شهر را انتخاب نمایید.",
+    noCityError: "لطفا شهر کاربر را انتخاب نمایید.",
     submitted: "افزودن کاربر با موفقیت انجام گردید.",
 };
 
@@ -160,6 +180,13 @@ export const citiesPage = {
     _title: "شهر‌ها",
     name: "نام",
     mciCenters: "مراکز مخابرات",
+};
+
+export const selectCityModal = {
+    modalTitle: "انتخاب شهر",
+    province: "استان",
+    city: "شهر",
+    modalOkButton: "انتخاب",
 };
 
 export const mciCentersPage = {

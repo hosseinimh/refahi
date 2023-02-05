@@ -32,16 +32,23 @@ class UserService
         })->where('username', 'LIKE', '%' . $username . '%')->where('tbl_users.name', 'LIKE', '%' . $name . '%')->where('family', 'LIKE', '%' . $family . '%')->where('city_id', $cityId)->select('tbl_users.*', 'tbl_cities.name AS city_name', 'tbl_provinces.name AS province_name')->orderBy('family', 'ASC')->orderBy('tbl_users.name', 'ASC')->orderBy('tbl_users.id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
 
-    public function store(string $username, string $password, string $name, string $family, int|null $cityId, int $role): mixed
+    public function store(string $username, string $password, string $name, string $family, int|null $nationalCode, string $mobile, string $email, int|null $cityId, int $role, int $gender, int $isActive): mixed
     {
         $role = ($role >= Role::USER && $role <= Role::ADMINISTRATOR) ? $role : Role::USER;
+        $gender = $gender > 0 ? 1 : 0;
+        $isActive = $isActive > 0 ? 1 : 0;
         $data = [
             'username' => $username,
             'password' => $password,
             'name' => $name,
             'family' => $family,
+            'national_code' => $nationalCode,
+            'mobile' => $mobile,
+            'email' => $email,
             'city_id' => $role === Role::USER ? ($cityId ?? 0) : 0,
             'role' => $role,
+            'gender' => $gender,
+            'is_active' => $isActive,
         ];
         $model = Model::create($data);
 

@@ -21,11 +21,12 @@ class CreateTblUsersTable extends Migration
             $table->string('name');
             $table->string('family');
             $table->string('national_code');
-            $table->string('email');
             $table->string('mobile');
+            $table->string('email');
             $table->unsignedBigInteger('city_id');
             $table->unsignedTinyInteger('role')->default(Role::USER);
             $table->unsignedTinyInteger('gender')->default(0);
+            $table->unsignedTinyInteger('is_active')->default(0);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

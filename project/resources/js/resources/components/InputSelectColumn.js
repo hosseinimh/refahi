@@ -7,6 +7,7 @@ const InputSelectColumn = ({
     keyItem,
     valueItem,
     register = null,
+    setValue = null,
     strings,
     handleChange,
     selectStyle = {},
@@ -14,7 +15,7 @@ const InputSelectColumn = ({
     columnClassName = "col-12 pb-4",
     noSelect = false,
     multiple = false,
-    selectedValues,
+    selectedValues = null,
 }) => {
     const _ls = useSelector((state) => state.layoutReducer);
     const _ms = useSelector((state) => state.messageReducer);
@@ -25,10 +26,10 @@ const InputSelectColumn = ({
                 {strings[field]}
             </label>
             <select
+                id={field}
                 style={{ ...selectStyle }}
                 multiple={multiple}
                 size={size}
-                defaultValue={multiple ? [...selectedValues] : selectedValues}
                 {...(register instanceof Function && register(field))}
                 className={
                     _ms?.messageField === field

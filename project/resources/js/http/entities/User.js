@@ -25,23 +25,56 @@ export class User extends Entity {
         return await this.handlePost(API_URLS.FETCH_USER + "/" + id);
     }
 
-    async store(username, password, passwordConfirmed, name, family, unitId) {
-        return await this.handlePost(API_URLS.STORE_USER + "/" + unitId, {
+    async storeUser(
+        username,
+        password,
+        confirmPassword,
+        name,
+        family,
+        nationalCode,
+        mobile,
+        email,
+        cityId,
+        gender,
+        isActive
+    ) {
+        return await this.handlePost(API_URLS.STORE_USER + "/" + cityId, {
             username: username,
             password: password,
-            password_confirmation: passwordConfirmed,
+            password_confirmation: confirmPassword,
             name: name,
             family: family,
+            national_code: nationalCode,
+            mobile: mobile,
+            email: email,
+            gender: gender,
+            is_active: isActive,
         });
     }
 
-    async storeAdmin(username, password, passwordConfirmed, name, family) {
-        return await this.handlePost(API_URLS.STORE_ADMIN, {
+    async storeAdmininistrator(
+        username,
+        password,
+        confirmPassword,
+        name,
+        family,
+        nationalCode,
+        mobile,
+        email,
+        gender,
+        isActive
+    ) {
+        return await this.handlePost(API_URLS.STORE_USER, {
             username: username,
             password: password,
-            password_confirmation: passwordConfirmed,
+            password_confirmation: confirmPassword,
             name: name,
             family: family,
+            national_code: nationalCode,
+            mobile: mobile,
+            email: email,
+            gender: gender,
+            is_active: isActive,
         });
     }
 

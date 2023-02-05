@@ -26,7 +26,7 @@ class StoreUserRequest extends FormRequest
             'family' => 'required|min:3|max:50',
             'national_code' => 'required|digits:10',
             'mobile' => 'required|digits:11',
-            'email' => 'email',
+            'email' => 'email|max:50',
         ];
     }
 
@@ -52,6 +52,7 @@ class StoreUserRequest extends FormRequest
             'mobile.required' => __('user.mobile_required'),
             'mobile.digits' => __('user.mobile_digits'),
             'email.email' => __('user.email_email'),
+            'email.max' => __('user.email_max'),
         ];
     }
 }

@@ -20,11 +20,11 @@ class User extends Authenticatable
         'name',
         'family',
         'national_code',
-        'email',
         'mobile',
-        'gender',
+        'email',
         'city_id',
         'role',
+        'gender',
         'is_active',
     ];
 

@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 
 import { general } from "../../constants/strings";
+import { setPagePropsAction } from "../../state/layout/layoutActions";
+import { clearMessageAction } from "../../state/message/messageActions";
 import { InsertPage } from "../Pages/_layout";
 
 const SubmitCancelForm = ({
@@ -12,6 +14,7 @@ const SubmitCancelForm = ({
     handleSubmit,
     errors,
     setValue = null,
+    modals = null,
 }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -32,6 +35,37 @@ const SubmitCancelForm = ({
     useEffect(() => {
         funcs.onLoad(params);
     }, [params]);
+
+    useEffect(() => {
+        loadModals();
+    }, []);
+
+    const loadModals = () => {
+        let ms = [];
+
+        modals?.map((modal) => {
+            const modalElement = document.getElementById(modal.id);
+            const m = new coreui.Modal(modalElement);
+            const useForm = modal?.useForm;
+
+            modalElement.addEventListener("hidden.coreui.modal", () => {
+                dispatch(
+                    setPagePropsAction({
+                        item: null,
+                        action: null,
+                    })
+                );
+                dispatch(clearMessageAction());
+                useForm?.reset();
+            });
+
+            ms = [{ modal: m, useForm }, ...ms];
+        });
+
+        if (funcs?.loadModals instanceof Function) {
+            funcs.loadModals(ms);
+        }
+    };
 
     return (
         <InsertPage page={page} errors={errors}>

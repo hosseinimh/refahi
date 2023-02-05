@@ -14,7 +14,6 @@ export const USERS_API_URLS = {
     FETCH_USER: `${SERVER_URL}/users/show`,
     FETCH_USERS: `${SERVER_URL}/users`,
     STORE_USER: `${SERVER_URL}/users/store`,
-    STORE_ADMIN: `${SERVER_URL}/users/store_admin`,
     UPDATE_USER: `${SERVER_URL}/users/update`,
     CHANGE_PASSWORD: `${SERVER_URL}/users/change_password`,
 };

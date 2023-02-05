@@ -35,7 +35,7 @@ const AddEquipment = () => {
                 size={5}
                 columnClassName={"col-md-6 col-sm-12 pb-4"}
                 strings={strings}
-                items={types}
+                items={equipmentTypes}
                 keyItem={"id"}
                 valueItem={"value"}
                 handleChange={(e) => funcs.onChange(e)}

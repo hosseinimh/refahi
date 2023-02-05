@@ -39,19 +39,14 @@ class UserController extends Controller
         return $this->onItem($this->service->get($model->id));
     }
 
-    public function store(City $city, StoreUserRequest $request): HttpJsonResponse
-    {
-        return $this->onStore($this->service->store($request->username, $request->password, $request->name, $request->family, $city->id, Role::USER));
-    }
-
     public function storeAdmin(StoreUserRequest $request): HttpJsonResponse
     {
-        return $this->onStore($this->service->store($request->username, $request->password, $request->name, $request->family, null, Role::ADMINISTRATOR));
+        return $this->onStore($this->service->store($request->username, $request->password, $request->name, $request->family, $request->national_code, $request->mobile, $request->email, 0, Role::ADMINISTRATOR, $request->gender, $request->is_active));
     }
 
-    public function update(Model $model, UpdateUserRequest $request): HttpJsonResponse
+    public function storeUser(City $city, StoreUserRequest $request): HttpJsonResponse
     {
-        return $this->onUpdate($this->service->update($model, $request->name, $request->family));
+        return $this->onStore($this->service->store($request->username, $request->password, $request->name, $request->family, $request->national_code, $request->mobile, $request->email, $city->id, Role::USER, $request->gender, $request->is_active));
     }
 
     public function changePassword(Model $model, ChangePasswordRequest $request): HttpJsonResponse
