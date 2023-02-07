@@ -69,8 +69,8 @@ export const loadModals = (modals) => {
     _modals = modals;
 };
 
-export const onType = (e, field) => {
-    if (e?.target?.checked && field === "administrator") {
+export const onType = (field) => {
+    if (field === "administrator") {
         _dispatch(setPagePropsAction({ userType: USER_ROLES.ADMINISTRATOR }));
     } else {
         _dispatch(setPagePropsAction({ userType: USER_ROLES.USER }));
@@ -101,7 +101,7 @@ export const onSubmit = async (data) => {
 
     let city = parseInt(data.city);
 
-    if (data.user && (isNaN(city) || city <= 0)) {
+    if (_ls?.pageProps?.userType === "user" && (isNaN(city) || city <= 0)) {
         _dispatch(setLoadingAction(false));
         _dispatch(
             setMessageAction(
@@ -114,32 +114,33 @@ export const onSubmit = async (data) => {
         return;
     }
 
-    let result = data.administrator
-        ? await _entity.storeAdmininistrator(
-              data.username,
-              data.password,
-              data.confirmPassword,
-              data.name,
-              data.family,
-              data.nationalCode,
-              data.mobile,
-              data.email,
-              data.gender ? 1 : 0,
-              data.isActive ? 1 : 0
-          )
-        : await _entity.storeUser(
-              data.username,
-              data.password,
-              data.confirmPassword,
-              data.name,
-              data.family,
-              data.nationalCode,
-              data.mobile,
-              data.email,
-              data.city,
-              data.gender ? 1 : 0,
-              data.isActive ? 1 : 0
-          );
+    let result =
+        _ls?.pageProps?.userType === "administrator"
+            ? await _entity.storeAdmininistrator(
+                  data.username,
+                  data.password,
+                  data.confirmPassword,
+                  data.name,
+                  data.family,
+                  data.nationalCode,
+                  data.mobile,
+                  data.email,
+                  data.gender ? 1 : 0,
+                  data.isActive ? 1 : 0
+              )
+            : await _entity.storeUser(
+                  data.username,
+                  data.password,
+                  data.confirmPassword,
+                  data.name,
+                  data.family,
+                  data.nationalCode,
+                  data.mobile,
+                  data.email,
+                  data.city,
+                  data.gender ? 1 : 0,
+                  data.isActive ? 1 : 0
+              );
 
     if (result === null) {
         _dispatch(setLoadingAction(false));

@@ -79,7 +79,6 @@ const AddUser = () => {
                 columnClassName="col-md-6 col-sm-12 pb-4"
             />
             <InputTextColumn
-                type="number"
                 field="nationalCode"
                 register={register}
                 strings={strings}
@@ -137,7 +136,7 @@ const AddUser = () => {
                     setValue={setValue}
                     strings={strings}
                     checked={true}
-                    onChange={funcs.onType}
+                    onChange={(e) => funcs.onType("administrator")}
                 />
                 <InputRadioColumn
                     field="user"
@@ -145,7 +144,7 @@ const AddUser = () => {
                     register={register}
                     setValue={setValue}
                     strings={strings}
-                    onChange={funcs.onType}
+                    onChange={(e) => funcs.onType("user")}
                 />
             </div>
             <input type="hidden" {...register(`city`)} />

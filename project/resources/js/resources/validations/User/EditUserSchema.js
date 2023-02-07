@@ -35,6 +35,42 @@ const editUserSchema = yup.object().shape({
                 .replace(":max", "50")
         )
         .required(validation.requiredMessage.replace(":field", strings.family)),
+    nationalCode: yup
+        .string(
+            validation.stringMessage.replace(":field", strings.nationalCode)
+        )
+        .matches(
+            /^[0-9]{10}$/,
+            validation.exactDigitMessage
+                .replace(":field", strings.nationalCode)
+                .replace(":digit", "10")
+        )
+        .required(
+            validation.requiredMessage.replace(":field", strings.nationalCode)
+        ),
+    mobile: yup
+        .string(validation.stringMessage.replace(":field", strings.mobile))
+        .matches(
+            /^[0-9]{11}$/,
+            validation.exactDigitMessage
+                .replace(":field", strings.mobile)
+                .replace(":digit", "11")
+        )
+        .required(validation.requiredMessage.replace(":field", strings.mobile)),
+    email: yup
+        .string(validation.stringMessage.replace(":field", strings.email))
+        .email(validation.validMessage.replace(":field", strings.email))
+        .max(
+            50,
+            validation.maxMessage
+                .replace(":field", strings.email)
+                .replace(":max", "50")
+        )
+        .required(validation.requiredMessage.replace(":field", strings.email)),
+    city: yup
+        .number()
+        .typeError(validation.requiredMessage.replace(":field", strings.city))
+        .required(validation.requiredMessage.replace(":field", strings.city)),
 });
 
 export default editUserSchema;

@@ -21,7 +21,7 @@ export class User extends Entity {
         return await this.handlePost(API_URLS.FETCH_USER);
     }
 
-    async getAdmin(id) {
+    async getAdmininistrator(id) {
         return await this.handlePost(API_URLS.FETCH_USER + "/" + id);
     }
 
@@ -78,14 +78,60 @@ export class User extends Entity {
         });
     }
 
-    async update(id, name, family) {
+    async updateUser(
+        id,
+        name,
+        family,
+        nationalCode,
+        mobile,
+        email,
+        cityId,
+        gender,
+        isActive
+    ) {
+        return await this.handlePost(
+            API_URLS.UPDATE_USER + "/" + id + "/" + cityId,
+            {
+                name: name,
+                family: family,
+                national_code: nationalCode,
+                mobile: mobile,
+                email: email,
+                gender: gender,
+                is_active: isActive,
+            }
+        );
+    }
+
+    async updateAdmininistrator(
+        id,
+        name,
+        family,
+        nationalCode,
+        mobile,
+        email,
+        gender,
+        isActive
+    ) {
         return await this.handlePost(API_URLS.UPDATE_USER + "/" + id, {
             name: name,
             family: family,
+            national_code: nationalCode,
+            mobile: mobile,
+            email: email,
+            gender: gender,
+            is_active: isActive,
         });
     }
 
-    async changePassword(id, newPassword, confirmPassword) {
+    async changePassword(newPassword, confirmPassword) {
+        return await this.handlePost(API_URLS.CHANGE_PASSWORD, {
+            new_password: newPassword,
+            new_password_confirmation: confirmPassword,
+        });
+    }
+
+    async changePasswordUser(id, newPassword, confirmPassword) {
         return await this.handlePost(API_URLS.CHANGE_PASSWORD + "/" + id, {
             new_password: newPassword,
             new_password_confirmation: confirmPassword,

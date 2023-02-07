@@ -20,7 +20,6 @@ let _setValue;
 let _equipmentId;
 let _callbackUrl;
 let _pageProps;
-let _type;
 let _entity = new Entity();
 
 export const init = (dispatch, navigate, setValue) => {

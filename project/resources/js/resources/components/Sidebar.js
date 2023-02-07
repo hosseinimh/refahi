@@ -163,7 +163,7 @@ function Sidebar() {
                 </ul>
             </li>
             <li className="nav-group" aria-expanded="false">
-                <a className="nav-link nav-group-toggle" href="#">
+                <a className="nav-link nav-group-toggle">
                     <svg className="nav-icon">
                         <use
                             xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-group`}

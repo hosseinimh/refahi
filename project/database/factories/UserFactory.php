@@ -19,6 +19,11 @@ class UserFactory extends Factory
             'password' => '123456789a',
             'name' => fake()->firstName(),
             'family' => fake()->lastName(),
+            'national_code' => rand(1234567890, 9999999999),
+            'mobile' => rand(11111111111, 99999999999),
+            'email' => fake()->email(),
+            'gender' => rand(0, 1),
+            'is_active' => rand(0, 1),
             'remember_token' => Str::random(10),
         ];
     }
