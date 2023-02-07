@@ -62,7 +62,7 @@ export const onSubmit = async (data) => {
     _dispatch(setLoadingAction(true));
     _dispatch(clearMessageAction());
 
-    let result = await _entity.changePassword(
+    let result = await _entity.changePasswordUser(
         _userId,
         data.newPassword,
         data.confirmPassword

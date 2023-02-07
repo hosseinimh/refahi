@@ -101,7 +101,10 @@ export const onSubmit = async (data) => {
 
     let city = parseInt(data.city);
 
-    if (_ls?.pageProps?.userType === "user" && (isNaN(city) || city <= 0)) {
+    if (
+        _ls?.pageProps?.userType === USER_ROLES.USER &&
+        (isNaN(city) || city <= 0)
+    ) {
         _dispatch(setLoadingAction(false));
         _dispatch(
             setMessageAction(
@@ -115,7 +118,7 @@ export const onSubmit = async (data) => {
     }
 
     let result =
-        _ls?.pageProps?.userType === "administrator"
+        _ls?.pageProps?.userType === USER_ROLES.ADMINISTRATOR
             ? await _entity.storeAdmininistrator(
                   data.username,
                   data.password,
