@@ -109,7 +109,7 @@ const setUserId = (userId) => {
 const fillForm = async () => {
     let result =
         _lsUser?.role === USER_ROLES.ADMINISTRATOR
-            ? await _entity.getAdmin(_userId)
+            ? await _entity.getAdmininistrator(_userId)
             : await _entity.getUser();
 
     if (result === null) {

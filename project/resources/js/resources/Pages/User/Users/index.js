@@ -62,6 +62,15 @@ const Users = () => {
                         >
                             {general.edit}
                         </button>
+                        <button
+                            type="button"
+                            className="btn btn-secondary mb-2 px-4 ml-2"
+                            onClick={() => funcs.onChangePassword(item)}
+                            title={strings.changePassword}
+                            disabled={_ls?.loading}
+                        >
+                            {strings.changePassword}
+                        </button>
                     </td>
                 </tr>
             </React.Fragment>

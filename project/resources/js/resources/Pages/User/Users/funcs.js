@@ -65,6 +65,10 @@ export const onLayoutState = () => {
             editAction(_ls?.pageProps?.item);
 
             return;
+        case "CHANGE_PASSWORD":
+            changePasswordAction(_ls?.pageProps?.item);
+
+            return;
     }
 };
 
@@ -81,6 +85,15 @@ export const onEdit = (item) => {
     );
 };
 
+export const onChangePassword = (item) => {
+    _dispatch(
+        setPagePropsAction({
+            action: "CHANGE_PASSWORD",
+            item,
+        })
+    );
+};
+
 export const setPage = (page) => {
     _dispatch(setPagePropsAction({ pageNumber: page }));
 };
@@ -92,6 +105,12 @@ const addAction = () => {
 const editAction = (item) => {
     if (!isNaN(item?.id) && item?.id > 0) {
         _navigate(`${basePath}/users/edit/${item.id}`);
+    }
+};
+
+const changePasswordAction = (item) => {
+    if (!isNaN(item?.id) && item?.id > 0) {
+        _navigate(`${basePath}/users/change_password/${item.id}`);
     }
 };
 
