@@ -129,23 +129,6 @@ function Sidebar() {
                     <li className="nav-item">
                         <Link
                             className={
-                                page === "ViewUser"
-                                    ? "nav-link active"
-                                    : "nav-link"
-                            }
-                            to={`${basePath}/users/view`}
-                        >
-                            <svg className="nav-icon">
-                                <use
-                                    xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-user`}
-                                ></use>
-                            </svg>
-                            {strings.viewUser}
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link
-                            className={
                                 page === "ChangePassword"
                                     ? "nav-link active"
                                     : "nav-link"

@@ -30,8 +30,8 @@ const Header = () => {
         dispatch(fetchLogoutAction());
     };
 
-    const onViewUser = () => {
-        navigate(`${basePath}/users/view`);
+    const onEditUser = () => {
+        navigate(`${basePath}/users/edit/${lsUser?.id}`);
     };
 
     const onChanePassword = () => {
@@ -87,7 +87,7 @@ const Header = () => {
                             </div>
                             <button
                                 className="dropdown-item"
-                                onClick={onViewUser}
+                                onClick={onEditUser}
                             >
                                 <BsFillEyeFill
                                     style={{
@@ -95,7 +95,7 @@ const Header = () => {
                                         marginLeft: "0.9rem",
                                     }}
                                 />
-                                {strings.viewUser}
+                                {strings.editUser}
                             </button>
                             <button
                                 className="dropdown-item"

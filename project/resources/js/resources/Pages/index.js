@@ -1,7 +1,6 @@
 import Dashboard from "./Dashboard/Dashboard";
 import LoginUser from "./User/LoginUser";
 import Users from "./User/Users";
-import ViewUser from "./User/ViewUser";
 import AddUser from "./User/AddUser";
 import EditUser from "./User/EditUser";
 import ChangePasswordUser from "./User/ChangePasswordUser";
@@ -21,7 +20,6 @@ export {
     Dashboard,
     LoginUser,
     Users,
-    ViewUser,
     AddUser,
     EditUser,
     ChangePasswordUser,

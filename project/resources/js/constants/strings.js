@@ -73,7 +73,6 @@ export const header = {
     home: "خانه",
     changePassword: "تغییر کلمه عبور",
     editUser: "ویرایش کاربر",
-    viewUser: "مشاهده کاربر",
     logout: "خروج کاربری",
 };
 
@@ -86,7 +85,6 @@ export const sidebar = {
     equipments: "تجهیزات",
     changePassword: "تغییر کلمه عبور",
     editUser: "ویرایش کاربر",
-    viewUser: "مشاهده کاربر",
     logout: "خروج کاربری",
 };
 
@@ -112,13 +110,6 @@ export const usersPage = {
     searchSubmit: "جستجو",
     changePassword: "تغییر کلمه عبور",
     add: "افزودن کاربر",
-};
-
-export const viewUserPage = {
-    _title: "نمایش کاربر",
-    username: "نام کاربری",
-    name: "نام",
-    family: "نام خانوادگی",
 };
 
 export const addUserPage = {
