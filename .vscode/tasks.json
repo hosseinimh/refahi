@@ -1,0 +1,30 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "PHP artisan serve",
+      "command": "php",
+      "args": ["${workspaceFolder}/project/artisan", "serve"],
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "presentation": {
+        "reveal": "never",
+        "panel": "new"
+      }
+    },
+    {
+      "type": "npm",
+      "script": "watch",
+      "path": "project",
+      "label": "npm run watch",
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "presentation": {
+        "reveal": "never",
+        "panel": "new"
+      }
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 {
   "editor.fontSize": 14,
   "screencastMode.fontSize": 45,
-  "notebook.outputLineHeight": 18
+  "notebook.outputLineHeight": 18,
+  "terminal.integrated.env.windows": {}
 }

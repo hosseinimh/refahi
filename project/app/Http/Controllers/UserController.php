@@ -66,7 +66,7 @@ class UserController extends Controller
 
     public function login(LoginRequest $request): HttpJsonResponse
     {
-        if (!auth()->attempt(['username' => $request->username, 'password' => $request->password])) {
+        if (!auth()->attempt(['username' => $request->username, 'password' => $request->password, 'is_active' => 1])) {
             return $this->onError(['_error' => __('user.user_not_found'), '_errorCode' => ErrorCode::USER_NOT_FOUND]);
         }
 
