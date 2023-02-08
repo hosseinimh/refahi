@@ -28,13 +28,13 @@ class StorePlaceTypeRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => __('ple_type.name_required'),
-            'name.min' => __('ple_type.name_min'),
-            'name.max' => __('ple_type.name_max'),
-            'type.required' => __('ple_type.type_required'),
-            'type.numeric' => __('ple_type.type_numeric'),
-            'type.min' => __('ple_type.type_min'),
-            'type.max' => __('ple_type.type_max'),
+            'name.required' => __('place_type.name_required'),
+            'name.min' => __('place_type.name_min'),
+            'name.max' => __('place_type.name_max'),
+            'type.required' => __('place_type.type_required'),
+            'type.numeric' => __('place_type.type_numeric'),
+            'type.min' => __('place_type.type_min'),
+            'type.max' => __('place_type.type_max'),
         ];
     }
 }

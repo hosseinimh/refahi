@@ -20,9 +20,9 @@ class CreateTblPlacesTable extends Migration
             $table->unsignedMediumInteger('building');
             $table->string('tel');
             $table->string('address');
-            $table->string('latitude');
-            $table->string('longitude');
-            $table->string('postal_code');
+            $table->unsignedFloat('latitude');
+            $table->unsignedFloat('longitude');
+            $table->unsignedBigInteger('postal_code');
             $table->unsignedMediumInteger('region_no');
             $table->string('water_bill_no');
             $table->string('electricity_bill_no');

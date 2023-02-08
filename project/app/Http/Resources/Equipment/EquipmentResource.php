@@ -14,7 +14,7 @@ class EquipmentResource extends JsonResource
             'name' => Helper::localeNumbers($this->name) ?? '',
             'assetNo' => $this->asset_no ?? '',
             'equipmentTypeId' => intval($this->equipment_type_id),
-            'equipmentName' => Helper::localeNumbers($this->equipment_name) ?? '',
+            'equipmentTypeName' => Helper::localeNumbers($this->equipment_type_name) ?? '',
             'equipmentType' => intval($this->equipment_type),
             'equipmentTypeText' => $this->getTypeText(intval($this->equipment_type)),
         ];

@@ -30,11 +30,11 @@ class EquipmentController extends Controller
 
     public function store(EquipmentType $equipmentType, StoreRequest $request): HttpJsonResponse
     {
-        return $this->onStore($this->service->store($equipmentType->id, $request->name));
+        return $this->onStore($this->service->store($equipmentType->id, $request->name, $request->asset_no));
     }
 
     public function update(Model $model, EquipmentType $equipmentType, UpdateRequest $request): HttpJsonResponse
     {
-        return $this->onUpdate($this->service->update($model, $equipmentType->id, $request->name));
+        return $this->onUpdate($this->service->update($model, $equipmentType->id, $request->name, $request->asset_no));
     }
 }

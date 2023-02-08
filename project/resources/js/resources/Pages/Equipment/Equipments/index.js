@@ -31,7 +31,7 @@ const Equipments = () => {
                 <tr>
                     <td scope="row">{utils.en2faDigits(index + 1)}</td>
                     <td>{item.name}</td>
-                    <td>{`${item.equipmentName} ---- ${item.equipmentTypeText}`}</td>
+                    <td>{`${item.equipmentTypeName} ---- ${item.equipmentTypeText}`}</td>
                 </tr>
                 <tr>
                     <td colSpan={_columnsCount}>

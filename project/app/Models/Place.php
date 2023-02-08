@@ -13,7 +13,6 @@ class Place extends Model
     protected $table = 'tbl_places';
     protected $fillable = [
         'name',
-        'city_id',
         'land',
         'building',
         'tel',

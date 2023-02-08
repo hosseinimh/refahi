@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\EquipmentTypeController;
 use App\Http\Controllers\MciCenterController;
+use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\PlaceTypeController;
 use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\UserController;
@@ -15,6 +16,7 @@ use App\Http\Resources\City\CityResource;
 use App\Http\Resources\Equipment\EquipmentResource;
 use App\Http\Resources\EquipmentType\EquipmentTypeResource;
 use App\Http\Resources\MciCenter\MciCenterResource;
+use App\Http\Resources\Place\PlaceResource;
 use App\Http\Resources\PlaceType\PlaceTypeResource;
 use App\Http\Resources\Province\ProvinceResource;
 use App\Http\Resources\User\UserResource;
@@ -24,6 +26,7 @@ use App\Services\CityService;
 use App\Services\EquipmentService;
 use App\Services\EquipmentTypeService;
 use App\Services\MciCenterService;
+use App\Services\PlaceService;
 use App\Services\PlaceTypeService;
 use App\Services\ProvinceService;
 use App\Services\UserService;
@@ -79,6 +82,10 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(PlaceTypeController::class, function ($app) {
             return new PlaceTypeController(new JsonResponse(PlaceTypeResource::class), $app->make(PlaceTypeService::class));
+        });
+
+        $this->app->bind(PlaceController::class, function ($app) {
+            return new PlaceController(new JsonResponse(PlaceResource::class), $app->make(PlaceService::class));
         });
     }
 }
