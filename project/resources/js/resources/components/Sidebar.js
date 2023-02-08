@@ -191,6 +191,52 @@ function Sidebar() {
                     </li>
                 </ul>
             </li>
+            <li className="nav-group" aria-expanded="false">
+                <a className="nav-link nav-group-toggle">
+                    <svg className="nav-icon">
+                        <use
+                            xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-group`}
+                        ></use>
+                    </svg>
+                    {strings.places}
+                </a>
+                <ul className="nav-group-items">
+                    <li className="nav-item">
+                        <Link
+                            className={
+                                page === "PlaceTypes"
+                                    ? "nav-link active"
+                                    : "nav-link"
+                            }
+                            to={`${basePath}/place_types`}
+                        >
+                            <svg className="nav-icon">
+                                <use
+                                    xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-group`}
+                                ></use>
+                            </svg>
+                            {strings.placeTypes}
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link
+                            className={
+                                page === "Places"
+                                    ? "nav-link active"
+                                    : "nav-link"
+                            }
+                            to={`${basePath}/places`}
+                        >
+                            <svg className="nav-icon">
+                                <use
+                                    xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-group`}
+                                ></use>
+                            </svg>
+                            {strings.places}
+                        </Link>
+                    </li>
+                </ul>
+            </li>
             <li className="nav-item">
                 <Link
                     className={

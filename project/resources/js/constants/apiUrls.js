@@ -49,3 +49,11 @@ export const EQUIPMENTS_API_URLS = {
     STORE_EQUIPMENT: `${SERVER_URL}/equipments/store`,
     UPDATE_EQUIPMENT: `${SERVER_URL}/equipments/update`,
 };
+
+export const PLACE_TYPES_API_URLS = {
+    FETCH_PLACE_TYPE: `${SERVER_URL}/place_types/show`,
+    FETCH_PLACE_TYPES: `${SERVER_URL}/place_types`,
+    FETCH_ALL_PLACE_TYPES: `${SERVER_URL}/place_types/all`,
+    STORE_PLACE_TYPE: `${SERVER_URL}/place_types/store`,
+    UPDATE_PLACE_TYPE: `${SERVER_URL}/place_types/update`,
+};

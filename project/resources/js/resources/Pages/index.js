@@ -15,6 +15,9 @@ import EditEquipmentType from "./EquipmentType/EditEquipmentType";
 import Equipments from "./Equipment/Equipments";
 import AddEquipment from "./Equipment/AddEquipment";
 import EditEquipment from "./Equipment/EditEquipment";
+import PlaceTypes from "./PlaceType/PlaceTypes";
+import AddPlaceType from "./PlaceType/AddPlaceType";
+import EditPlaceType from "./PlaceType/EditPlaceType";
 
 export {
     Dashboard,
@@ -34,4 +37,7 @@ export {
     Equipments,
     AddEquipment,
     EditEquipment,
+    PlaceTypes,
+    AddPlaceType,
+    EditPlaceType,
 };

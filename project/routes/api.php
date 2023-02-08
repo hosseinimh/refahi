@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\EquipmentTypeController;
 use App\Http\Controllers\MciCenterController;
+use App\Http\Controllers\PlaceTypeController;
 use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +49,12 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
     Route::post('equipments', [EquipmentController::class, 'index']);
     Route::post('equipments/store/{equipmentType}', [EquipmentController::class, 'store']);
     Route::post('equipments/update/{model}/{equipmentType}', [EquipmentController::class, 'update']);
+
+    Route::post('place_types/show/{model}', [PlaceTypeController::class, 'show']);
+    Route::post('place_types', [PlaceTypeController::class, 'index']);
+    Route::post('place_types/all', [PlaceTypeController::class, 'getAll']);
+    Route::post('place_types/store', [PlaceTypeController::class, 'store']);
+    Route::post('place_types/update/{model}', [PlaceTypeController::class, 'update']);
 });
 
 // 'user' type users

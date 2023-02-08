@@ -107,6 +107,18 @@ function AuthRoute() {
                                         path={`${basePath}/equipments`}
                                         element={<Pages.Equipments />}
                                     />
+                                    <Route
+                                        path={`${basePath}/place_types/add`}
+                                        element={<Pages.AddPlaceType />}
+                                    />
+                                    <Route
+                                        path={`${basePath}/place_types/edit/:placeTypeId`}
+                                        element={<Pages.EditPlaceType />}
+                                    />
+                                    <Route
+                                        path={`${basePath}/place_types`}
+                                        element={<Pages.PlaceTypes />}
+                                    />
                                 </>
                             )}
 

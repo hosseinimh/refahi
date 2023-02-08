@@ -3,6 +3,7 @@ import { MESSAGE_CODES } from "./messageCodes";
 import { UPLOADED_FILE } from "./UploadedFile";
 import { USER_ROLES } from "./userRoles";
 import { EQUIPMENT_TYPES, equipmentTypes } from "./equipmentTypes";
+import { PLACE_TYPES, placeTypes } from "./placeTypes";
 
 import {
     SERVER_URL,
@@ -13,6 +14,7 @@ import {
     MCI_CENTERS_API_URLS,
     EQUIPMENT_TYPES_API_URLS,
     EQUIPMENTS_API_URLS,
+    PLACE_TYPES_API_URLS,
 } from "./apiUrls";
 
 import {
@@ -39,6 +41,7 @@ export {
     MCI_CENTERS_API_URLS,
     EQUIPMENT_TYPES_API_URLS,
     EQUIPMENTS_API_URLS,
+    PLACE_TYPES_API_URLS,
     rootPath,
     basePath,
     loginPath,
@@ -57,4 +60,6 @@ export {
     USER_ROLES,
     EQUIPMENT_TYPES,
     equipmentTypes,
+    PLACE_TYPES,
+    placeTypes,
 };

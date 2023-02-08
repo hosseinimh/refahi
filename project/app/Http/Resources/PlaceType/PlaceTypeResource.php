@@ -12,7 +12,19 @@ class PlaceTypeResource extends JsonResource
         return [
             'id' => intval($this->id),
             'name' => Helper::localeNumbers($this->name) ?? '',
-            'parentId' => intval($this->parent_id),
+            'type' => intval($this->type),
+            'typeText' => $this->getTypeText(intval($this->type)),
         ];
+    }
+
+    private function getTypeText(int $type)
+    {
+        $text = __('place_type.type_undefined');
+
+        if ($type >= 1 && $type <= 4) {
+            $text = __('place_type.type_' . $type);
+        }
+
+        return $text;
     }
 }

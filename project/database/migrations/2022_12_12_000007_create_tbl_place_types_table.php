@@ -16,7 +16,7 @@ class CreateTblPlaceTypesTable extends Migration
         Schema::create('tbl_place_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('parent_id');
+            $table->unsignedTinyInteger('type');
             $table->timestamps();
             $table->softDeletes();
         });

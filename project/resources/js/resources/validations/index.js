@@ -10,6 +10,8 @@ import addEquipmentTypeSchema from "./EquipmentType/AddEquipmentTypeSchema";
 import editEquipmentTypeSchema from "./EquipmentType/EditEquipmentTypeSchema";
 import addEquipmentSchema from "./Equipment/AddEquipmentSchema";
 import editEquipmentSchema from "./Equipment/EditEquipmentSchema";
+import addPlaceTypeSchema from "./PlaceType/AddPlaceTypeSchema";
+import editPlaceTypeSchema from "./PlaceType/EditPlaceTypeSchema";
 
 export {
     loginUserSchema,
@@ -24,4 +26,6 @@ export {
     editEquipmentTypeSchema,
     addEquipmentSchema,
     editEquipmentSchema,
+    addPlaceTypeSchema,
+    editPlaceTypeSchema,
 };

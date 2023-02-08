@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             MciCenterSeeder::class,
             EquipmentTypeSeeder::class,
             EquipmentSeeder::class,
+            PlaceTypeSeeder::class,
         ]);
     }
 }

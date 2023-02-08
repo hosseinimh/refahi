@@ -13,6 +13,6 @@ class PlaceType extends Model
     protected $table = 'tbl_place_types';
     protected $fillable = [
         'name',
-        'parent_id',
+        'type',
     ];
 }

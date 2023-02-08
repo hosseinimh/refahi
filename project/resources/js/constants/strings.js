@@ -82,9 +82,11 @@ export const sidebar = {
     dashboard: "داشبورد",
     editProfile: "ویرایش پروفایل",
     users: "کاربران",
-    provinces: "استان‌ها",
     equipmentTypes: "نوع تجهیزات",
     equipments: "تجهیزات",
+    places: "اماکن",
+    placeTypes: "نوع اماکن",
+    provinces: "استان‌ها",
     changePassword: "تغییر کلمه عبور",
     editUser: "ویرایش کاربر",
     logout: "خروج کاربری",
@@ -306,4 +308,36 @@ export const editEquipmentPage = {
     type: "نوع",
     submit: "ویرایش",
     submitted: "ویرایش تجهیزات با موفقیت انجام شد.",
+};
+
+export const placeTypes = {
+    type1: "اماکن رفاهی",
+    type2: "منازل سازمانی",
+    type3: "سایت‌ها",
+    type4: "اداری",
+};
+
+export const placeTypesPage = {
+    _title: "نوع اماکن",
+    name: "نام",
+    type: "نوع",
+    add: "افزودن نوع اماکن",
+};
+
+export const addPlaceTypePage = {
+    _title: "افزودن نوع اماکن",
+    name: "نام",
+    namePlaceholder: "نام",
+    type: "نوع",
+    submit: "ثبت",
+    submitted: "افزودن نوع اماکن با موفقیت انجام شد.",
+};
+
+export const editPlaceTypePage = {
+    _title: "ویرایش نوع اماکن",
+    name: "نام",
+    namePlaceholder: "نام",
+    type: "نوع",
+    submit: "ویرایش",
+    submitted: "ویرایش نوع اماکن با موفقیت انجام شد.",
 };
