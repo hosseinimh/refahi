@@ -44,8 +44,8 @@ function Sidebar() {
         const headerToggler = document.querySelector(".header-toggler");
 
         wrapper?.addEventListener("click", wrapperClick);
-        headerToggler.removeEventListener("click", toggleHideSidebar);
-        headerToggler.addEventListener("click", toggleHideSidebar);
+        headerToggler?.removeEventListener("click", toggleHideSidebar);
+        headerToggler?.addEventListener("click", toggleHideSidebar);
 
         if (window.innerWidth > 767) {
             sidebar?.classList.remove("hide");

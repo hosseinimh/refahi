@@ -19,7 +19,7 @@ const InputTextColumn = ({
     const renderInput = () => (
         <>
             <input
-                {...register(field)}
+                {...(register instanceof Function && register(field))}
                 className={
                     _ms?.messageField === field
                         ? "form-control is-invalid"

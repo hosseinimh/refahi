@@ -37,6 +37,9 @@ export const fetchLoginAction =
 
             if (response.data._result === "1") {
                 utils.setLSVariable("user", JSON.stringify(response.data.item));
+                window.location.reload();
+
+                return;
 
                 dispatch({
                     type: FETCH_LOGIN_SUCCESS_ACTION,

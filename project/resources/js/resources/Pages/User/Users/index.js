@@ -1,15 +1,27 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import { usersPage as strings, general } from "../../../../constants/strings";
 import * as funcs from "./funcs";
-import { List, TableFooter, TableItems } from "../../../components";
+import {
+    InputTextColumn,
+    List,
+    SearchBox,
+    TableFooter,
+    TableItems,
+} from "../../../components";
 import utils from "../../../../utils/Utils";
 import { USER_ROLES } from "../../../../constants";
+import { searchUserSchema as schema } from "../../../validations";
 
 const Users = () => {
     const _columnsCount = 5;
     const _ls = useSelector((state) => state.layoutReducer);
+    const searchUseForm = useForm({
+        resolver: yupResolver(schema),
+    });
 
     const renderHeader = () => (
         <tr>
@@ -89,7 +101,19 @@ const Users = () => {
             )}
             strings={strings}
             funcs={funcs}
-        />
+            errors={searchUseForm.formState.errors}
+        >
+            <SearchBox>
+                <div className="row">
+                    <InputTextColumn
+                        field="username"
+                        register={searchUseForm.register}
+                        strings={strings}
+                        inputStyle={{ textAlign: "left" }}
+                    />
+                </div>
+            </SearchBox>
+        </List>
     );
 };
 

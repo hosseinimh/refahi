@@ -1,6 +1,4 @@
 import React from "react";
-
-import { iconsPath } from "../../constants";
 import { footer as strings } from "../../constants/strings";
 
 const LoginFooter = () => {

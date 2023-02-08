@@ -11,6 +11,7 @@ const List = ({
     page,
     funcs,
     strings,
+    children,
     renderHeader,
     renderItems,
     renderFooter = null,
@@ -39,6 +40,7 @@ const List = ({
 
     return (
         <Page page={page}>
+            {children}
             {(hasAdd || backUrl) && (
                 <div className="row mb-2">
                     <div className="col-sm-12 mb-4">
@@ -67,6 +69,7 @@ const List = ({
                     </div>
                 </div>
             )}
+
             <div className="row mb-4">
                 <Table
                     renderHeader={renderHeader}

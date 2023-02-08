@@ -18,6 +18,7 @@ import InputSwitchCheckboxColumn from "./InputSwitchCheckboxColumn";
 import Modal from "./Modal";
 import SelectCityModal from "./SelectCityModal";
 import SubmitCancelForm from "./SubmitCancelForm";
+import SearchBox from "./SearchBox";
 import List from "./List";
 import PageList from "./PageList";
 
@@ -42,6 +43,7 @@ export {
     Modal,
     SelectCityModal,
     SubmitCancelForm,
+    SearchBox,
     List,
     PageList,
 };

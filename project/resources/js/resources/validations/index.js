@@ -1,5 +1,5 @@
 import loginUserSchema from "./User/LoginUserSchema";
-import userSearchSchema from "./User/UserSearchSchema";
+import searchUserSchema from "./User/SearchUserSchema";
 import addUserSchema from "./User/AddUserSchema";
 import editUserSchema from "./User/EditUserSchema";
 import changePasswordUserSchema from "./User/ChangePasswordUserSchema";
@@ -13,7 +13,7 @@ import editEquipmentSchema from "./Equipment/EditEquipmentSchema";
 
 export {
     loginUserSchema,
-    userSearchSchema,
+    searchUserSchema,
     addUserSchema,
     editUserSchema,
     changePasswordUserSchema,
