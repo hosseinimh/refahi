@@ -13,6 +13,7 @@ class Equipment extends Model
     protected $table = 'tbl_equipments';
     protected $fillable = [
         'name',
+        'asset_no',
         'equipment_type_id',
     ];
 }

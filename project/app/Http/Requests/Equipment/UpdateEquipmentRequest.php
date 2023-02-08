@@ -21,6 +21,7 @@ class UpdateEquipmentRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:50',
+            'asset_no' => 'required|min:3|max:50',
         ];
     }
 
@@ -30,6 +31,9 @@ class UpdateEquipmentRequest extends FormRequest
             'name.required' => __('equipment.name_required'),
             'name.min' => __('equipment.name_min'),
             'name.max' => __('equipment.name_max'),
+            'asset_no.required' => __('equipment.asset_no_required'),
+            'asset_no.min' => __('equipment.asset_no_min'),
+            'asset_no.max' => __('equipment.asset_no_max'),
         ];
     }
 }

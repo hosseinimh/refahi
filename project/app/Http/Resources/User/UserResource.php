@@ -15,6 +15,7 @@ class UserResource extends JsonResource
             'name' => Helper::localeNumbers($this->name) ?? '',
             'family' => Helper::localeNumbers($this->family) ?? '',
             'nationalCode' => $this->national_code ?? '',
+            'personnelNo' => $this->personnel_no ?? '',
             'role' => intval($this->role),
             'cityId' => intval($this->city_id),
             'cityName' => $this->city_name ?? '',

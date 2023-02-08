@@ -16,6 +16,7 @@ class CreateTblEquipmentsTable extends Migration
         Schema::create('tbl_equipments', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('asset_no');
             $table->unsignedBigInteger('equipment_type_id');
             $table->timestamps();
             $table->softDeletes();

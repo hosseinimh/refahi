@@ -61,7 +61,14 @@ const EditEquipment = () => {
                 field="name"
                 register={register}
                 strings={strings}
-                columnClassName="col-md-8 col-sm-12 pb-4"
+                columnClassName="col-md-6 col-sm-12 pb-4"
+            />
+            <InputTextColumn
+                field="assetNo"
+                register={register}
+                strings={strings}
+                columnClassName="col-md-3 col-sm-12 pb-4"
+                inputStyle={{ textAlign: "left" }}
             />
         </SubmitCancelForm>
     );

@@ -15,6 +15,7 @@ class EquipmentFactory extends Factory
     {
         return [
             'name' => fake()->title(),
+            'asset_no' => rand(111, 999999999),
         ];
     }
 }

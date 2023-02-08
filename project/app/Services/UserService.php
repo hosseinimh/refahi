@@ -33,7 +33,7 @@ class UserService
         })->where('username', 'LIKE', '%' . $username . '%')->where('tbl_users.name', 'LIKE', '%' . $name . '%')->where('family', 'LIKE', '%' . $family . '%')->where('city_id', $cityId)->select('tbl_users.*', 'tbl_cities.name AS city_name', 'tbl_provinces.name AS province_name')->orderBy('family', 'ASC')->orderBy('tbl_users.name', 'ASC')->orderBy('tbl_users.id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
 
-    public function store(string $username, string $password, string $name, string $family, string|null $nationalCode, string $mobile, string $email, int|null $cityId, int $role, int $gender, int $isActive): mixed
+    public function store(string $username, string $password, string $name, string $family, string|null $nationalCode, string|null $personnelNo, string $mobile, string $email, int|null $cityId, int $role, int $gender, int $isActive): mixed
     {
         $role = ($role >= Role::USER && $role <= Role::ADMINISTRATOR) ? $role : Role::USER;
         $gender = $gender > 0 ? 1 : 0;
@@ -44,6 +44,7 @@ class UserService
             'name' => $name,
             'family' => $family,
             'national_code' => $nationalCode,
+            'personnel_no' => $personnelNo,
             'mobile' => $mobile,
             'email' => $email,
             'city_id' => $role === Role::USER ? ($cityId ?? 0) : 0,
@@ -56,7 +57,7 @@ class UserService
         return $model ?? null;
     }
 
-    public function update(Model $model, string $name, string $family, string|null $nationalCode, string $mobile, string $email, int|null $cityId, int $role, int $gender, int $isActive): bool
+    public function update(Model $model, string $name, string $family, string|null $nationalCode, string|null $personnelNo, string $mobile, string $email, int|null $cityId, int $role, int $gender, int $isActive): bool
     {
         $role = ($role >= Role::USER && $role <= Role::ADMINISTRATOR) ? $role : Role::USER;
         $gender = $gender > 0 ? 1 : 0;
@@ -65,6 +66,7 @@ class UserService
             'name' => $name,
             'family' => $family,
             'national_code' => $nationalCode,
+            'personnel_no' => $personnelNo,
             'mobile' => $mobile,
             'email' => $email,
             'city_id' => $role === Role::USER ? ($cityId ?? 0) : 0,

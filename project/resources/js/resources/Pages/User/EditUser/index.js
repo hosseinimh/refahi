@@ -129,46 +129,55 @@ const EditUser = () => {
             </div>
             <input type="hidden" {...register(`city`)} />
             {_ls?.pageProps?.userType === USER_ROLES.USER && (
-                <div className="col-md-6 col-sm-12 pb-4">
-                    <label className="form-label d-block">
-                        {strings.selectCity}
-                    </label>
-                    {!_ls?.pageProps?.city && (
-                        <button
-                            className="btn btn-link"
-                            type="button"
-                            onClick={funcs.onSelectCity}
-                        >
-                            <svg className="icon me-2">
-                                <use
-                                    xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-plus`}
-                                    style={{ color: "green" }}
-                                ></use>
-                            </svg>
-                            {strings.noCity}
-                        </button>
-                    )}
-                    {_ls?.pageProps?.city && (
-                        <>
-                            <span className="ml-2">
-                                {_ls?.pageProps?.city?.name}
-                            </span>
+                <>
+                    <div className="col-md-6 col-sm-12 pb-4">
+                        <label className="form-label d-block">
+                            {strings.selectCity}
+                        </label>
+                        {!_ls?.pageProps?.city && (
                             <button
                                 className="btn btn-link"
                                 type="button"
-                                onClick={funcs.onRemoveCity}
+                                onClick={funcs.onSelectCity}
                             >
                                 <svg className="icon me-2">
                                     <use
-                                        xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-x`}
-                                        style={{ color: "red" }}
+                                        xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-plus`}
+                                        style={{ color: "green" }}
                                     ></use>
                                 </svg>
-                                {general.remove}
+                                {strings.noCity}
                             </button>
-                        </>
-                    )}
-                </div>
+                        )}
+                        {_ls?.pageProps?.city && (
+                            <>
+                                <span className="ml-2">
+                                    {_ls?.pageProps?.city?.name}
+                                </span>
+                                <button
+                                    className="btn btn-link"
+                                    type="button"
+                                    onClick={funcs.onRemoveCity}
+                                >
+                                    <svg className="icon me-2">
+                                        <use
+                                            xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-x`}
+                                            style={{ color: "red" }}
+                                        ></use>
+                                    </svg>
+                                    {general.remove}
+                                </button>
+                            </>
+                        )}
+                    </div>
+                    <InputTextColumn
+                        type="number"
+                        field="personnelNo"
+                        register={register}
+                        strings={strings}
+                        inputStyle={{ textAlign: "left" }}
+                    />
+                </>
             )}
             <SelectCityModal
                 id="select-city-modal"

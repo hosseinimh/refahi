@@ -21,6 +21,7 @@ class CreateTblUsersTable extends Migration
             $table->string('name');
             $table->string('family');
             $table->string('national_code');
+            $table->string('personnel_no');
             $table->string('mobile');
             $table->string('email');
             $table->unsignedBigInteger('city_id');

@@ -20,6 +20,7 @@ class UserFactory extends Factory
             'name' => fake()->firstName(),
             'family' => fake()->lastName(),
             'national_code' => rand(1234567890, 9999999999),
+            'personnel_no' => rand(1234567890, 9999999999),
             'mobile' => rand(11111111111, 99999999999),
             'email' => fake()->email(),
             'gender' => rand(0, 1),

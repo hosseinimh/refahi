@@ -61,7 +61,12 @@ export const onSubmit = async (data) => {
     _dispatch(setLoadingAction(true));
     _dispatch(clearMessageAction());
 
-    let result = await _entity.update(_equipmentId, data.type, data.name);
+    let result = await _entity.update(
+        _equipmentId,
+        data.type,
+        data.name,
+        data.assetNo
+    );
 
     if (result === null) {
         _dispatch(setLoadingAction(false));
@@ -128,6 +133,7 @@ const fillForm = async () => {
     onChange(result.item.equipmentType);
     _setValue("equipmentType", result.item.equipmentType);
     _setValue("name", result.item.name);
+    _setValue("assetNo", result.item.assetNo);
 
     _dispatch(setTitleAction(`${strings._title} [ ${result.item.name} ]`));
     _dispatch(setPagePropsAction({ type: result.item.equipmentTypeId }));

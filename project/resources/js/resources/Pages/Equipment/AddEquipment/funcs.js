@@ -42,7 +42,7 @@ export const onSubmit = async (data) => {
     _dispatch(setLoadingAction(true));
     _dispatch(clearMessageAction());
 
-    let result = await _entity.store(data.type, data.name);
+    let result = await _entity.store(data.type, data.name, data.assetNo);
 
     if (result === null) {
         _dispatch(setLoadingAction(false));

@@ -139,6 +139,7 @@ export const onSubmit = async (data) => {
                   data.name,
                   data.family,
                   data.nationalCode,
+                  data.personnelNo,
                   data.mobile,
                   data.email,
                   data.gender ? 1 : 0,
@@ -149,6 +150,7 @@ export const onSubmit = async (data) => {
                   data.name,
                   data.family,
                   data.nationalCode,
+                  data.personnelNo,
                   data.mobile,
                   data.email,
                   data.city,
@@ -212,6 +214,7 @@ const fillForm = async () => {
     _setValue("name", result.item.name);
     _setValue("family", result.item.family);
     _setValue("nationalCode", result.item.nationalCode);
+    _setValue("personnelNo", result.item.personnelNo);
     _setValue("mobile", result.item.mobile);
     _setValue("email", result.item.email);
     _setValue(result.item.gender === 1 ? "female" : "male", "on");

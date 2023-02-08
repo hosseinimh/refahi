@@ -17,20 +17,22 @@ export class Equipment extends Entity {
         return await this.handlePost(API_URLS.FETCH_EQUIPMENT + "/" + id);
     }
 
-    async store(equipmentTypeId, name) {
+    async store(equipmentTypeId, name, assetNo) {
         return await this.handlePost(
             API_URLS.STORE_EQUIPMENT + "/" + equipmentTypeId,
             {
                 name,
+                asset_no: assetNo,
             }
         );
     }
 
-    async update(id, equipmentTypeId, name) {
+    async update(id, equipmentTypeId, name, assetNo) {
         return await this.handlePost(
             API_URLS.UPDATE_EQUIPMENT + "/" + id + "/" + equipmentTypeId,
             {
                 name,
+                asset_no: assetNo,
             }
         );
     }

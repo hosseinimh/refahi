@@ -23,6 +23,8 @@ class UpdateUserRequest extends FormRequest
             'name' => 'required|min:3|max:50',
             'family' => 'required|min:3|max:50',
             'national_code' => 'required|digits:10',
+            'personnel_no' => 'required|digits_between:5,10',
+            'mobile' => 'required|digits:11',
             'mobile' => 'required|digits:11',
             'email' => 'email|max:50',
         ];
@@ -39,6 +41,8 @@ class UpdateUserRequest extends FormRequest
             'family.max' => __('user.family_max'),
             'national_code.required' => __('user.national_code_required'),
             'national_code.digits' => __('user.national_code_digits'),
+            'personnel_no.required' => __('user.personnel_no_required'),
+            'personnel_no.digits_between' => __('user.personnel_no_digits_between'),
             'mobile.required' => __('user.mobile_required'),
             'mobile.digits' => __('user.mobile_digits'),
             'email.email' => __('user.email_email'),
