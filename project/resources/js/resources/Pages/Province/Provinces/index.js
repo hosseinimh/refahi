@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import { provincesPage as strings } from "../../../../constants/strings";
 import * as funcs from "./funcs";
-import { List, TableItems } from "../../../components";
+import { ListPage, TableItems } from "../../../components";
 import utils from "../../../../utils/Utils";
 
 const Provinces = () => {
@@ -46,12 +46,11 @@ const Provinces = () => {
     };
 
     return (
-        <List
+        <ListPage
             page={"Provinces"}
-            renderHeader={renderHeader}
-            renderItems={renderItems}
-            hasAdd={false}
             strings={strings}
+            table={{ renderHeader, renderItems }}
+            hasAdd={false}
             funcs={funcs}
         />
     );

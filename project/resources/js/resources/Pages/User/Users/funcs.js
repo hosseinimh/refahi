@@ -99,6 +99,8 @@ export const setPage = (page) => {
     _dispatch(setPagePropsAction({ pageNumber: page }));
 };
 
+export const onSubmit = (data) => {};
+
 const addAction = () => {
     _navigate(`${basePath}/users/add`);
 };

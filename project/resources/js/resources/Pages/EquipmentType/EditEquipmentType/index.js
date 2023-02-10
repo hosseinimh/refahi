@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import {
     InputSelectColumn,
     InputTextColumn,
-    SubmitCancelForm,
+    FormPage,
 } from "../../../components";
 import * as funcs from "./funcs";
 import { editEquipmentTypePage as strings } from "../../../../constants/strings";
@@ -18,20 +18,18 @@ const EditEquipmentType = () => {
     });
 
     return (
-        <SubmitCancelForm page={"EquipmentTypes"} useForm={form} funcs={funcs}>
+        <FormPage
+            page={"EquipmentTypes"}
+            strings={strings}
+            useForm={form}
+            funcs={funcs}
+        >
             <InputTextColumn
                 field="name"
-                useForm={form}
-                strings={strings}
                 columnClassName="col-md-8 col-sm-12 pb-4"
             />
-            <InputSelectColumn
-                field="type"
-                useForm={form}
-                strings={strings}
-                items={equipmentTypes}
-            />
-        </SubmitCancelForm>
+            <InputSelectColumn field="type" items={equipmentTypes} />
+        </FormPage>
     );
 };
 

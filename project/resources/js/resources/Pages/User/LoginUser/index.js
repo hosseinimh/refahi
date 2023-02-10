@@ -15,20 +15,21 @@ const LoginUser = () => {
     });
 
     return (
-        <LoginPage strings={strings} useForm={form} funcs={funcs}>
+        <LoginPage
+            page={"Users"}
+            strings={strings}
+            useForm={form}
+            funcs={funcs}
+        >
             <div className="row">
                 <InputTextColumn
                     field="username"
-                    useForm={form}
-                    strings={strings}
                     columnClassName="col-12 pb-4"
                     icon={<BsPhone />}
                 />
                 <InputTextColumn
                     field="password"
                     type="password"
-                    useForm={form}
-                    strings={strings}
                     columnClassName="col-12 pb-4"
                     icon={<BsFileEarmarkLock2 />}
                 />

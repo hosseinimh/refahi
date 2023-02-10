@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const InputSelectColumn = ({
@@ -18,24 +18,42 @@ const InputSelectColumn = ({
 }) => {
     const ls = useSelector((state) => state.layoutReducer);
     const ms = useSelector((state) => state.messageReducer);
+    const [label, setLabel] = useState(
+        strings && field in strings ? strings[field] : ""
+    );
+    const [form, setForm] = useState(useForm);
+
+    useEffect(() => {
+        if (!strings) {
+            setLabel(
+                ls?.pageProps?.strings && field in ls.pageProps.strings
+                    ? ls?.pageProps?.strings[field]
+                    : ""
+            );
+        }
+
+        if (!useForm) {
+            setForm(ls?.pageProps?.useForm);
+        }
+    }, [ls]);
 
     useEffect(() => {
         if (selectedValues) {
-            useForm.setValue(field, selectedValues);
+            form?.setValue(field, selectedValues);
         }
     }, [items]);
 
     return (
         <div className={columnClassName}>
             <label className="form-label" htmlFor={field}>
-                {strings[field]}
+                {label}
             </label>
             <select
                 id={field}
                 style={{ ...selectStyle }}
                 multiple={multiple}
                 size={size}
-                {...useForm.register(field)}
+                {...form?.register(field)}
                 className={
                     ms?.messageField === field
                         ? "form-select is-invalid"

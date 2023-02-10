@@ -8,7 +8,7 @@ import * as funcs from "./funcs";
 import {
     InputSelectColumn,
     InputTextColumn,
-    List,
+    ListPage,
     SearchBox,
     TableFooter,
     TableItems,
@@ -97,27 +97,23 @@ const Users = () => {
     );
 
     return (
-        <List
+        <ListPage
             page={"Users"}
+            strings={strings}
             useForm={form}
             table={{ renderHeader, renderItems, renderFooter }}
-            strings={strings}
             funcs={funcs}
         >
-            <SearchBox useForm={form}>
+            <SearchBox useForm={form} onSubmit={funcs.onSubmit}>
                 <div className="row">
                     <InputTextColumn
                         field="username"
-                        useForm={form}
-                        strings={strings}
                         inputStyle={{
                             textAlign: "left",
                         }}
                     />
                     <InputSelectColumn
                         field="province"
-                        strings={strings}
-                        useForm={form}
                         items={ls?.pageProps?.provinces}
                         valueItem={"name"}
                         selectedValues={"11"}
@@ -125,7 +121,7 @@ const Users = () => {
                     />
                 </div>
             </SearchBox>
-        </List>
+        </ListPage>
     );
 };
 

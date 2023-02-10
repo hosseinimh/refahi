@@ -5,6 +5,7 @@ import Header from "./Section/Header";
 import Footer from "./Section/Footer";
 import Sidebar from "./Section/Sidebar";
 import SearchBox from "./Section/SearchBox";
+import Card from "./Section/Card";
 
 // Link
 import CustomLink from "./Link/CustomLink";
@@ -31,8 +32,9 @@ import Modal from "./Modal/Modal";
 import SelectCityModal from "./Modal/SelectCityModal";
 
 // Page
-import List from "./Page/List";
-import SubmitCancelForm from "./Page/SubmitCancelForm";
+import BlankPage from "./Page/BlankPage";
+import ListPage from "./Page/ListPage";
+import FormPage from "./Page/FormPage";
 
 export {
     LoginHeader,
@@ -41,6 +43,7 @@ export {
     Footer,
     Sidebar,
     SearchBox,
+    Card,
     CustomLink,
     AlertMessage,
     AlertState,
@@ -55,6 +58,7 @@ export {
     InputSwitchCheckboxColumn,
     Modal,
     SelectCityModal,
-    List,
-    SubmitCancelForm,
+    BlankPage,
+    ListPage,
+    FormPage,
 };

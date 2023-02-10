@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const InputRadioColumn = ({
@@ -10,17 +10,35 @@ const InputRadioColumn = ({
     onChange = null,
 }) => {
     const ls = useSelector((state) => state.layoutReducer);
+    const [label, setLabel] = useState(
+        strings && field in strings ? strings[field] : ""
+    );
+    const [form, setForm] = useState(useForm);
+
+    useEffect(() => {
+        if (!strings) {
+            setLabel(
+                ls?.pageProps?.strings && field in ls.pageProps.strings
+                    ? ls?.pageProps?.strings[field]
+                    : ""
+            );
+        }
+
+        if (!useForm) {
+            setForm(ls?.pageProps?.useForm);
+        }
+    }, [ls]);
 
     useEffect(() => {
         if (checked) {
-            useForm.setValue(field, "on");
+            form?.setValue(field, "on");
         }
-    }, []);
+    }, [form]);
 
     return (
         <div className="form-check">
             <input
-                {...useForm.register(field)}
+                {...form?.register(field)}
                 className="form-check-input"
                 id={field}
                 name={name}
@@ -31,13 +49,13 @@ const InputRadioColumn = ({
                         .querySelectorAll(`[name="${name}"]`)
                         .forEach((node) => {
                             if (node.id !== field) {
-                                useForm.setValue(node.id, null);
+                                form?.setValue(node.id, null);
                             }
                         });
 
                     e.target.checked
-                        ? setValue(field, "on")
-                        : setValue(field, null);
+                        ? form?.setValue(field, "on")
+                        : form?.setValue(field, null);
 
                     if (onChange) {
                         onChange(e, field);
@@ -45,7 +63,7 @@ const InputRadioColumn = ({
                 }}
             />
             <label className="form-check-label" htmlFor={field}>
-                {strings[field]}
+                {label}
             </label>
         </div>
     );

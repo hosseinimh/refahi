@@ -8,7 +8,7 @@ import {
     InputSwitchCheckboxColumn,
     InputTextColumn,
     SelectCityModal,
-    SubmitCancelForm,
+    FormPage,
 } from "../../../components";
 import * as funcs from "./funcs";
 import {
@@ -33,90 +33,57 @@ const EditUser = () => {
     });
 
     return (
-        <SubmitCancelForm
+        <FormPage
             page={"Users"}
+            strings={strings}
             funcs={funcs}
             useForm={form}
             modals={[{ id: "select-city-modal", useForm: selectCityUseForm }]}
         >
             <InputTextColumn
                 field="name"
-                useForm={form}
-                strings={strings}
                 columnClassName="col-md-6 col-sm-12 pb-4"
             />
             <InputTextColumn
                 field="family"
-                useForm={form}
-                strings={strings}
                 columnClassName="col-md-6 col-sm-12 pb-4"
             />
             <InputTextColumn
                 field="nationalCode"
-                useForm={form}
-                strings={strings}
                 columnClassName="col-md-6 col-sm-12 pb-4"
                 inputStyle={{ textAlign: "left" }}
             />
             <InputTextColumn
                 type="number"
                 field="mobile"
-                useForm={form}
-                strings={strings}
                 columnClassName="col-md-6 col-sm-12 pb-4"
                 inputStyle={{ textAlign: "left" }}
             />
             <InputTextColumn
                 field="email"
-                useForm={form}
-                strings={strings}
                 columnClassName="col-md-6 col-sm-12 pb-4"
                 inputStyle={{ textAlign: "left" }}
             />
             <div className="col-md-3 col-sm-12 pb-4">
                 <label className="form-label">{strings.gender}</label>
-                <InputRadioColumn
-                    field="male"
-                    name="gender"
-                    useForm={form}
-                    setValue={setValue}
-                    strings={strings}
-                    checked={true}
-                />
-                <InputRadioColumn
-                    field="female"
-                    name="gender"
-                    useForm={form}
-                    setValue={setValue}
-                    strings={strings}
-                />
+                <InputRadioColumn field="male" name="gender" checked={true} />
+                <InputRadioColumn field="female" name="gender" />
             </div>
             <div className="col-md-3 col-sm-12 pb-4">
                 <label className="form-label">{strings.status}</label>
-                <InputSwitchCheckboxColumn
-                    field="active"
-                    useForm={form}
-                    strings={strings}
-                    checked={true}
-                />
+                <InputSwitchCheckboxColumn field="active" checked={true} />
             </div>
             <div className="col-md-6 col-sm-12 pb-4">
                 <label className="form-label">{strings.type}</label>
                 <InputRadioColumn
                     field="administrator"
                     name="type"
-                    useForm={form}
-                    setValue={setValue}
-                    strings={strings}
                     checked={true}
                     onChange={(e) => funcs.onType("administrator")}
                 />
                 <InputRadioColumn
                     field="user"
                     name="type"
-                    useForm={form}
-                    setValue={setValue}
-                    strings={strings}
                     onChange={(e) => funcs.onType("user")}
                 />
             </div>
@@ -166,8 +133,6 @@ const EditUser = () => {
                     <InputTextColumn
                         type="number"
                         field="personnelNo"
-                        useForm={form}
-                        strings={strings}
                         inputStyle={{ textAlign: "left" }}
                     />
                 </>
@@ -178,7 +143,7 @@ const EditUser = () => {
                 useForm={selectCityUseForm}
                 funcs={funcs}
             />
-        </SubmitCancelForm>
+        </FormPage>
     );
 };
 

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import { citiesPage as strings } from "../../../../constants/strings";
 import * as funcs from "./funcs";
-import { List, TableItems } from "../../../components";
+import { ListPage, TableItems } from "../../../components";
 import { basePath } from "../../../../constants";
 import utils from "../../../../utils/Utils";
 
@@ -47,7 +47,7 @@ const Cities = () => {
     };
 
     return (
-        <List
+        <ListPage
             page={"Provinces"}
             table={{ renderHeader, renderItems }}
             hasAdd={false}

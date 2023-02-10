@@ -15,15 +15,13 @@ class DashboardController extends Controller
 
     public function reviewUser(): HttpJsonResponse
     {
-        $items = [];
-
-        return $this->onItems($items);
+        return $this->onItems([]);
     }
 
     public function reviewAdmin(): HttpJsonResponse
     {
-        $items = ['users' => (new UserService())->countAll()];
+        $userService = new UserService();
 
-        return $this->onItems($items);
+        return $this->onItems(['usersCount' => $userService->countAll()]);
     }
 }

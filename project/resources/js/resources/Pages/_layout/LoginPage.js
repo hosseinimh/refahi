@@ -1,12 +1,18 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { AlertState } from "../../components";
 import { general } from "../../../constants/strings";
 import BasePage from "./BasePage";
+import { setPagePropsAction } from "../../../state/layout/layoutActions";
 
 const LoginPage = ({ children, strings, useForm, funcs }) => {
+    const dispatch = useDispatch();
     const ls = useSelector((state) => state.layoutReducer);
+
+    useEffect(() => {
+        dispatch(setPagePropsAction({ strings, useForm }));
+    }, []);
 
     return (
         <BasePage

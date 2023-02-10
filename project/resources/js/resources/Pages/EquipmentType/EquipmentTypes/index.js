@@ -6,7 +6,7 @@ import {
     general,
 } from "../../../../constants/strings";
 import * as funcs from "./funcs";
-import { List, TableFooter, TableItems } from "../../../components";
+import { ListPage, TableFooter, TableItems } from "../../../components";
 import utils from "../../../../utils/Utils";
 
 const EquipmentTypes = () => {
@@ -57,7 +57,7 @@ const EquipmentTypes = () => {
     );
 
     return (
-        <List
+        <ListPage
             page={"EquipmentTypes"}
             table={{ renderHeader, renderItems, renderFooter }}
             strings={strings}

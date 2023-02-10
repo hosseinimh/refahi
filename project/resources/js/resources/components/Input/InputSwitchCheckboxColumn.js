@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const InputSwitchCheckboxColumn = ({
@@ -8,11 +8,29 @@ const InputSwitchCheckboxColumn = ({
     checked = false,
 }) => {
     const ls = useSelector((state) => state.layoutReducer);
+    const [label, setLabel] = useState(
+        strings && field in strings ? strings[field] : ""
+    );
+    const [form, setForm] = useState(useForm);
+
+    useEffect(() => {
+        if (!strings) {
+            setLabel(
+                ls?.pageProps?.strings && field in ls.pageProps.strings
+                    ? ls?.pageProps?.strings[field]
+                    : ""
+            );
+        }
+
+        if (!useForm) {
+            setForm(ls?.pageProps?.useForm);
+        }
+    }, [ls]);
 
     return (
         <div className="form-check form-switch">
             <input
-                {...useForm.register(field)}
+                {...form?.register(field)}
                 className="form-check-input"
                 id={field}
                 type="checkbox"
@@ -20,7 +38,7 @@ const InputSwitchCheckboxColumn = ({
                 defaultChecked={checked}
             />
             <label className="form-check-label" htmlFor={field}>
-                {strings[field]}
+                {label}
             </label>
         </div>
     );

@@ -6,7 +6,7 @@ import {
     general,
 } from "../../../../constants/strings";
 import * as funcs from "./funcs";
-import { List, TableFooter, TableItems } from "../../../components";
+import { ListPage, TableFooter, TableItems } from "../../../components";
 import { basePath } from "../../../../constants";
 import utils from "../../../../utils/Utils";
 
@@ -61,10 +61,10 @@ const MciCenters = () => {
     );
 
     return (
-        <List
+        <ListPage
             page={"Provinces"}
-            table={{ renderHeader, renderItems, renderFooter }}
             strings={strings}
+            table={{ renderHeader, renderItems, renderFooter }}
             funcs={funcs}
             backUrl={`${basePath}/cities/${ls?.pageProps?.city?.provinceId}`}
         />
