@@ -1,39 +1,52 @@
-import Header from "./Header";
-import Sidebar from "./Sidebar";
-import CustomLink from "./CustomLink";
-import AlertMessage from "./AlertMessage";
-import AlertState from "./AlertState";
-import Table from "./Table";
-import TableItems from "./TableItems";
-import TableFooter from "./TableFooter";
-import LoginHeader from "./LoginHeader";
-import LoginFooter from "./LoginFooter";
-import NumberInput from "./NumberInput";
-import InputTextColumn from "./InputTextColumn";
-import InputTextAreaColumn from "./InputTextAreaColumn";
-import InputFileColumn from "./InputFileColumn";
-import InputSelectColumn from "./InputSelectColumn";
-import InputRadioColumn from "./InputRadioColumn";
-import InputSwitchCheckboxColumn from "./InputSwitchCheckboxColumn";
-import Modal from "./Modal";
-import SelectCityModal from "./SelectCityModal";
-import SubmitCancelForm from "./SubmitCancelForm";
-import SearchBox from "./SearchBox";
-import List from "./List";
-import PageList from "./PageList";
+//Section
+import LoginHeader from "./Section/LoginHeader";
+import LoginFooter from "./Section/LoginFooter";
+import Header from "./Section/Header";
+import Footer from "./Section/Footer";
+import Sidebar from "./Section/Sidebar";
+import SearchBox from "./Section/SearchBox";
+
+// Link
+import CustomLink from "./Link/CustomLink";
+
+// Alert
+import AlertMessage from "./Alert/AlertMessage";
+import AlertState from "./Alert/AlertState";
+
+// Table
+import Table from "./Table/Table";
+import TableItems from "./Table/TableItems";
+import TableFooter from "./Table/TableFooter";
+
+//Input
+import InputTextColumn from "./Input/InputTextColumn";
+import InputTextAreaColumn from "./Input/InputTextAreaColumn";
+import InputFileColumn from "./Input/InputFileColumn";
+import InputSelectColumn from "./Input/InputSelectColumn";
+import InputRadioColumn from "./Input/InputRadioColumn";
+import InputSwitchCheckboxColumn from "./Input/InputSwitchCheckboxColumn";
+
+// Modal
+import Modal from "./Modal/Modal";
+import SelectCityModal from "./Modal/SelectCityModal";
+
+// Page
+import List from "./Page/List";
+import SubmitCancelForm from "./Page/SubmitCancelForm";
 
 export {
+    LoginHeader,
+    LoginFooter,
     Header,
+    Footer,
     Sidebar,
+    SearchBox,
     CustomLink,
     AlertMessage,
     AlertState,
     Table,
     TableItems,
     TableFooter,
-    LoginHeader,
-    LoginFooter,
-    NumberInput,
     InputTextColumn,
     InputTextAreaColumn,
     InputFileColumn,
@@ -42,8 +55,6 @@ export {
     InputSwitchCheckboxColumn,
     Modal,
     SelectCityModal,
-    SubmitCancelForm,
-    SearchBox,
     List,
-    PageList,
+    SubmitCancelForm,
 };

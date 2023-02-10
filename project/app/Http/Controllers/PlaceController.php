@@ -14,7 +14,7 @@ use App\Http\Requests\Place\UpdatePlaceRequest as UpdateRequest;
 
 class PlaceController extends Controller
 {
-    public function __construct(JsonResponse $response, private PlaceService $service)
+    public function __construct(JsonResponse $response, public PlaceService $service)
     {
         parent::__construct($response);
     }

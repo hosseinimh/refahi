@@ -13,34 +13,23 @@ import { addPlaceTypeSchema as schema } from "../../../validations";
 import { placeTypes } from "../../../../constants";
 
 const AddPlaceType = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm({
+    const form = useForm({
         resolver: yupResolver(schema),
     });
 
     return (
-        <SubmitCancelForm
-            page={"PlaceTypes"}
-            funcs={funcs}
-            handleSubmit={handleSubmit}
-            errors={errors}
-        >
+        <SubmitCancelForm page={"PlaceTypes"} funcs={funcs} useForm={form}>
             <InputTextColumn
                 field="name"
-                register={register}
+                useForm={form}
                 strings={strings}
                 columnClassName="col-md-8 col-sm-12 pb-4"
             />
             <InputSelectColumn
                 field="type"
-                register={register}
+                useForm={form}
                 strings={strings}
                 items={placeTypes}
-                keyItem={"id"}
-                valueItem={"value"}
             />
         </SubmitCancelForm>
     );

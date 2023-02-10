@@ -13,7 +13,7 @@ use App\Http\Requests\MciCenter\UpdateMciCenterRequest as UpdateRequest;
 
 class MciCenterController extends Controller
 {
-    public function __construct(PackagesJsonResponse $response, private MciCenterService $service)
+    public function __construct(PackagesJsonResponse $response, public MciCenterService $service)
     {
         parent::__construct($response);
     }

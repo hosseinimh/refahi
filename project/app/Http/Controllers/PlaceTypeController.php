@@ -12,7 +12,7 @@ use App\Http\Requests\PlaceType\UpdatePlaceTypeRequest as UpdateRequest;
 
 class PlaceTypeController extends Controller
 {
-    public function __construct(JsonResponse $response, private PlaceTypeService $service)
+    public function __construct(JsonResponse $response, public PlaceTypeService $service)
     {
         parent::__construct($response);
     }

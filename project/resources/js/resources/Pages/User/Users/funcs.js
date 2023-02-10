@@ -28,6 +28,7 @@ export const onLoad = (params) => {
         itemsCount: 0,
         item: null,
         items: null,
+        provinces: null,
         action: null,
     };
 
@@ -117,12 +118,12 @@ const changePasswordAction = (item) => {
 const fillForm = async (data = null) => {
     _dispatch(setLoadingAction(true));
 
-    await fetchUsers(data);
+    await fetchPageData(data);
 
     _dispatch(setLoadingAction(false));
 };
 
-const fetchUsers = async (data = null) => {
+const fetchPageData = async (data = null) => {
     let result = await _entity.getPaginate(
         data?.username ?? "",
         data?.name ?? "",
@@ -143,7 +144,20 @@ const fetchUsers = async (data = null) => {
         return;
     }
 
-    _dispatch(
-        setPagePropsAction({ items: result.items, itemsCount: result.count })
-    );
+    if (_ls?.pageProps?.pageNumber === 1) {
+        _dispatch(
+            setPagePropsAction({
+                items: result.items,
+                provinces: result.provinces,
+                itemsCount: result.count,
+            })
+        );
+    } else {
+        _dispatch(
+            setPagePropsAction({
+                items: result.items,
+                itemsCount: result.count,
+            })
+        );
+    }
 };

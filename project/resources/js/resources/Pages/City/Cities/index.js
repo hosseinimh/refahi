@@ -1,15 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { citiesPage as strings, general } from "../../../../constants/strings";
+import { citiesPage as strings } from "../../../../constants/strings";
 import * as funcs from "./funcs";
 import { List, TableItems } from "../../../components";
 import { basePath } from "../../../../constants";
 import utils from "../../../../utils/Utils";
 
 const Cities = () => {
-    const _columnsCount = 2;
-    const _ls = useSelector((state) => state.layoutReducer);
+    const ls = useSelector((state) => state.layoutReducer);
+    const columnsCount = 2;
 
     const renderHeader = () => (
         <tr>
@@ -21,20 +21,20 @@ const Cities = () => {
     );
 
     const renderItems = () => {
-        const children = _ls?.pageProps?.items?.map((item, index) => (
+        const children = ls?.pageProps?.items?.map((item, index) => (
             <React.Fragment key={item.id}>
                 <tr>
                     <td scope="row">{utils.en2faDigits(index + 1)}</td>
                     <td>{item.name}</td>
                 </tr>
                 <tr>
-                    <td colSpan={_columnsCount}>
+                    <td colSpan={columnsCount}>
                         <button
                             type="button"
                             className="btn btn-warning mb-2 px-4 ml-2"
                             title={strings.mciCenters}
                             onClick={() => funcs.onMciCenters(item)}
-                            disabled={_ls?.loading}
+                            disabled={ls?.loading}
                         >
                             {strings.mciCenters}
                         </button>
@@ -43,14 +43,13 @@ const Cities = () => {
             </React.Fragment>
         ));
 
-        return <TableItems columnsCount={_columnsCount} children={children} />;
+        return <TableItems columnsCount={columnsCount} children={children} />;
     };
 
     return (
         <List
             page={"Provinces"}
-            renderHeader={renderHeader}
-            renderItems={renderItems}
+            table={{ renderHeader, renderItems }}
             hasAdd={false}
             strings={strings}
             funcs={funcs}

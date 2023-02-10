@@ -1,18 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import {
-    provincesPage as strings,
-    general,
-} from "../../../../constants/strings";
+import { provincesPage as strings } from "../../../../constants/strings";
 import * as funcs from "./funcs";
 import { List, TableItems } from "../../../components";
 import utils from "../../../../utils/Utils";
-import { USER_ROLES } from "../../../../constants";
 
 const Provinces = () => {
-    const _columnsCount = 2;
-    const _ls = useSelector((state) => state.layoutReducer);
+    const ls = useSelector((state) => state.layoutReducer);
+    const columnsCount = 2;
 
     const renderHeader = () => (
         <tr>
@@ -24,20 +20,20 @@ const Provinces = () => {
     );
 
     const renderItems = () => {
-        const children = _ls?.pageProps?.items?.map((item, index) => (
+        const children = ls?.pageProps?.items?.map((item, index) => (
             <React.Fragment key={item.id}>
                 <tr>
                     <td scope="row">{utils.en2faDigits(index + 1)}</td>
                     <td>{item.name}</td>
                 </tr>
                 <tr>
-                    <td colSpan={_columnsCount}>
+                    <td colSpan={columnsCount}>
                         <button
                             type="button"
                             className="btn btn-warning mb-2 px-4 ml-2"
                             onClick={() => funcs.onCities(item)}
                             title={strings.cities}
-                            disabled={_ls?.loading}
+                            disabled={ls?.loading}
                         >
                             {strings.cities}
                         </button>
@@ -46,7 +42,7 @@ const Provinces = () => {
             </React.Fragment>
         ));
 
-        return <TableItems columnsCount={_columnsCount} children={children} />;
+        return <TableItems columnsCount={columnsCount} children={children} />;
     };
 
     return (

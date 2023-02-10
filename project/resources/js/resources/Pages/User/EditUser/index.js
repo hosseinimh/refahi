@@ -23,13 +23,8 @@ import {
 import { USER_ROLES, vendorsPath } from "../../../../constants";
 
 const EditUser = () => {
-    const _ls = useSelector((state) => state.layoutReducer);
-    const {
-        register,
-        setValue,
-        handleSubmit,
-        formState: { errors },
-    } = useForm({
+    const ls = useSelector((state) => state.layoutReducer);
+    const form = useForm({
         resolver: yupResolver(schema),
     });
 
@@ -41,26 +36,24 @@ const EditUser = () => {
         <SubmitCancelForm
             page={"Users"}
             funcs={funcs}
-            setValue={setValue}
-            handleSubmit={handleSubmit}
-            errors={errors}
+            useForm={form}
             modals={[{ id: "select-city-modal", useForm: selectCityUseForm }]}
         >
             <InputTextColumn
                 field="name"
-                register={register}
+                useForm={form}
                 strings={strings}
                 columnClassName="col-md-6 col-sm-12 pb-4"
             />
             <InputTextColumn
                 field="family"
-                register={register}
+                useForm={form}
                 strings={strings}
                 columnClassName="col-md-6 col-sm-12 pb-4"
             />
             <InputTextColumn
                 field="nationalCode"
-                register={register}
+                useForm={form}
                 strings={strings}
                 columnClassName="col-md-6 col-sm-12 pb-4"
                 inputStyle={{ textAlign: "left" }}
@@ -68,14 +61,14 @@ const EditUser = () => {
             <InputTextColumn
                 type="number"
                 field="mobile"
-                register={register}
+                useForm={form}
                 strings={strings}
                 columnClassName="col-md-6 col-sm-12 pb-4"
                 inputStyle={{ textAlign: "left" }}
             />
             <InputTextColumn
                 field="email"
-                register={register}
+                useForm={form}
                 strings={strings}
                 columnClassName="col-md-6 col-sm-12 pb-4"
                 inputStyle={{ textAlign: "left" }}
@@ -85,7 +78,7 @@ const EditUser = () => {
                 <InputRadioColumn
                     field="male"
                     name="gender"
-                    register={register}
+                    useForm={form}
                     setValue={setValue}
                     strings={strings}
                     checked={true}
@@ -93,7 +86,7 @@ const EditUser = () => {
                 <InputRadioColumn
                     field="female"
                     name="gender"
-                    register={register}
+                    useForm={form}
                     setValue={setValue}
                     strings={strings}
                 />
@@ -102,7 +95,7 @@ const EditUser = () => {
                 <label className="form-label">{strings.status}</label>
                 <InputSwitchCheckboxColumn
                     field="active"
-                    register={register}
+                    useForm={form}
                     strings={strings}
                     checked={true}
                 />
@@ -112,7 +105,7 @@ const EditUser = () => {
                 <InputRadioColumn
                     field="administrator"
                     name="type"
-                    register={register}
+                    useForm={form}
                     setValue={setValue}
                     strings={strings}
                     checked={true}
@@ -121,20 +114,20 @@ const EditUser = () => {
                 <InputRadioColumn
                     field="user"
                     name="type"
-                    register={register}
+                    useForm={form}
                     setValue={setValue}
                     strings={strings}
                     onChange={(e) => funcs.onType("user")}
                 />
             </div>
             <input type="hidden" {...register(`city`)} />
-            {_ls?.pageProps?.userType === USER_ROLES.USER && (
+            {ls?.pageProps?.userType === USER_ROLES.USER && (
                 <>
                     <div className="col-md-6 col-sm-12 pb-4">
                         <label className="form-label d-block">
                             {strings.selectCity}
                         </label>
-                        {!_ls?.pageProps?.city && (
+                        {!ls?.pageProps?.city && (
                             <button
                                 className="btn btn-link"
                                 type="button"
@@ -149,10 +142,10 @@ const EditUser = () => {
                                 {strings.noCity}
                             </button>
                         )}
-                        {_ls?.pageProps?.city && (
+                        {ls?.pageProps?.city && (
                             <>
                                 <span className="ml-2">
-                                    {_ls?.pageProps?.city?.name}
+                                    {ls?.pageProps?.city?.name}
                                 </span>
                                 <button
                                     className="btn btn-link"
@@ -173,7 +166,7 @@ const EditUser = () => {
                     <InputTextColumn
                         type="number"
                         field="personnelNo"
-                        register={register}
+                        useForm={form}
                         strings={strings}
                         inputStyle={{ textAlign: "left" }}
                     />

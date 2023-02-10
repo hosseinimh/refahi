@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class ProvinceController extends Controller
 {
-    public function __construct(JsonResponse $response, private ProvinceService $service)
+    public function __construct(JsonResponse $response, public ProvinceService $service)
     {
         parent::__construct($response);
     }

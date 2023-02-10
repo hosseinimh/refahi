@@ -14,58 +14,44 @@ import { addEquipmentSchema as schema } from "../../../validations";
 import { equipmentTypes } from "../../../../constants";
 
 const EditEquipment = () => {
-    const _ls = useSelector((state) => state.layoutReducer);
-    const {
-        register,
-        setValue,
-        handleSubmit,
-        formState: { errors },
-    } = useForm({
+    const ls = useSelector((state) => state.layoutReducer);
+    const form = useForm({
         resolver: yupResolver(schema),
     });
 
     useEffect(() => {
-        setValue("type", _ls?.pageProps?.type);
-    }, [_ls]);
+        form.setValue("type", ls?.pageProps?.type);
+    }, [ls]);
 
     return (
-        <SubmitCancelForm
-            page={"Equipments"}
-            funcs={funcs}
-            setValue={setValue}
-            handleSubmit={handleSubmit}
-            errors={errors}
-        >
+        <SubmitCancelForm page={"Equipments"} funcs={funcs} useForm={form}>
             <InputSelectColumn
-                register={register}
                 field="equipmentType"
+                useForm={form}
                 size={5}
                 columnClassName={"col-md-6 col-sm-12 pb-4"}
                 strings={strings}
                 items={equipmentTypes}
-                keyItem={"id"}
-                valueItem={"value"}
                 handleChange={(e) => funcs.onChange(e?.target?.value)}
             />
             <InputSelectColumn
                 field="type"
-                register={register}
+                useForm={form}
                 size={5}
                 columnClassName={"col-md-6 col-sm-12 pb-4"}
                 strings={strings}
-                items={_ls?.pageProps?.equipmentTypes}
-                keyItem={"id"}
+                items={ls?.pageProps?.equipmentTypes}
                 valueItem={"name"}
             />
             <InputTextColumn
                 field="name"
-                register={register}
+                useForm={form}
                 strings={strings}
                 columnClassName="col-md-6 col-sm-12 pb-4"
             />
             <InputTextColumn
                 field="assetNo"
-                register={register}
+                useForm={form}
                 strings={strings}
                 columnClassName="col-md-3 col-sm-12 pb-4"
                 inputStyle={{ textAlign: "left" }}

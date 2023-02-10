@@ -10,8 +10,8 @@ import { List, TableFooter, TableItems } from "../../../components";
 import utils from "../../../../utils/Utils";
 
 const Equipments = () => {
-    const _columnsCount = 3;
-    const _ls = useSelector((state) => state.layoutReducer);
+    const ls = useSelector((state) => state.layoutReducer);
+    const columnsCount = 3;
 
     const renderHeader = () => (
         <tr>
@@ -26,7 +26,7 @@ const Equipments = () => {
     );
 
     const renderItems = () => {
-        const children = _ls?.pageProps?.items?.map((item, index) => (
+        const children = ls?.pageProps?.items?.map((item, index) => (
             <React.Fragment key={item.id}>
                 <tr>
                     <td scope="row">{utils.en2faDigits(index + 1)}</td>
@@ -34,13 +34,13 @@ const Equipments = () => {
                     <td>{`${item.equipmentTypeName} ---- ${item.equipmentTypeText}`}</td>
                 </tr>
                 <tr>
-                    <td colSpan={_columnsCount}>
+                    <td colSpan={columnsCount}>
                         <button
                             type="button"
                             className="btn btn-warning mb-2 px-4 ml-2"
                             title={general.edit}
                             onClick={() => funcs.onEdit(item)}
-                            disabled={_ls?.loading}
+                            disabled={ls?.loading}
                         >
                             {general.edit}
                         </button>
@@ -49,17 +49,17 @@ const Equipments = () => {
             </React.Fragment>
         ));
 
-        return <TableItems columnsCount={_columnsCount} children={children} />;
+        return <TableItems columnsCount={columnsCount} children={children} />;
     };
+
+    const renderFooter = () => (
+        <TableFooter columnsCount={columnsCount} funcs={funcs} />
+    );
 
     return (
         <List
             page={"Equipments"}
-            renderHeader={renderHeader}
-            renderItems={renderItems}
-            renderFooter={() => (
-                <TableFooter columnsCount={_columnsCount} funcs={funcs} />
-            )}
+            table={{ renderHeader, renderItems, renderFooter }}
             strings={strings}
             funcs={funcs}
         />

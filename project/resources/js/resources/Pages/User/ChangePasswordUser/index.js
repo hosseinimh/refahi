@@ -8,31 +8,22 @@ import { changePasswordUserPage as strings } from "../../../../constants/strings
 import { changePasswordUserSchema as schema } from "../../../validations";
 
 const ChangePasswordUser = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm({
+    const form = useForm({
         resolver: yupResolver(schema),
     });
 
     return (
-        <SubmitCancelForm
-            page={"Users"}
-            funcs={funcs}
-            handleSubmit={handleSubmit}
-            errors={errors}
-        >
+        <SubmitCancelForm page={"Users"} funcs={funcs} useForm={form}>
             <InputTextColumn
                 field="newPassword"
                 type="password"
-                register={register}
+                useForm={form}
                 strings={strings}
             />
             <InputTextColumn
                 field="confirmPassword"
                 type="password"
-                register={register}
+                useForm={form}
                 strings={strings}
             />
         </SubmitCancelForm>

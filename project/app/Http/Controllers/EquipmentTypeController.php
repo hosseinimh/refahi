@@ -12,7 +12,7 @@ use App\Http\Requests\EquipmentType\UpdateEquipmentTypeRequest as UpdateRequest;
 
 class EquipmentTypeController extends Controller
 {
-    public function __construct(JsonResponse $response, private EquipmentTypeService $service)
+    public function __construct(JsonResponse $response, public EquipmentTypeService $service)
     {
         parent::__construct($response);
     }

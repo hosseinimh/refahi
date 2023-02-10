@@ -26,7 +26,7 @@ class Controller extends BaseController
 
     public function onItems(mixed $items, $count = 0)
     {
-        $count = $count <= 0 ? count($items) : $count;
+        $count = $count > 0 ? $count : count($items);
 
         return $this->response->itemsResponse($items, $count);
     }
@@ -59,5 +59,10 @@ class Controller extends BaseController
     public function onError(array|null $data = null): HttpJsonResponse
     {
         return $this->response->errorResponse($data);
+    }
+
+    public function collection($items)
+    {
+        return $this->response->collection($items);
     }
 }

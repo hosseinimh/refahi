@@ -10,25 +10,16 @@ import { loginUserSchema as schema } from "../../../validations";
 import LoginPage from "../../_layout/LoginPage";
 
 const LoginUser = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm({
+    const form = useForm({
         resolver: yupResolver(schema),
     });
 
     return (
-        <LoginPage
-            strings={strings}
-            handleSubmit={handleSubmit}
-            errors={errors}
-            funcs={funcs}
-        >
+        <LoginPage strings={strings} useForm={form} funcs={funcs}>
             <div className="row">
                 <InputTextColumn
                     field="username"
-                    register={register}
+                    useForm={form}
                     strings={strings}
                     columnClassName="col-12 pb-4"
                     icon={<BsPhone />}
@@ -36,7 +27,7 @@ const LoginUser = () => {
                 <InputTextColumn
                     field="password"
                     type="password"
-                    register={register}
+                    useForm={form}
                     strings={strings}
                     columnClassName="col-12 pb-4"
                     icon={<BsFileEarmarkLock2 />}

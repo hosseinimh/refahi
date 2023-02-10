@@ -26,24 +26,6 @@ export const general = {
     itemNotFound: "آیتم یافت نشد.",
     noDataFound: "اطلاعاتی یافت نشد.",
     noPermission: "شما مجوز ورود به این بخش را ندارید.",
-};
-
-export const loginHeader = {
-    text1: "خانه",
-};
-
-export const footer = {
-    text1: "پنل مدیریت رفاهی",
-    text2: "https://127.0.0.1:8000",
-    text3: "آدرس",
-    text4: "ایران",
-    text5: "شماره تماس",
-    text6: "09155295009",
-    text7: "شبکه‌های اجتماعی",
-    text8: "@hosseinimh",
-    text9: "پنل مدیریت رفاهی",
-    text14: "کلیه حقوق محفوظ است.",
-    text15: "محمود حسینی",
     loading: "لطفا منتظر بمانید ...",
 };
 
@@ -78,6 +60,12 @@ export const header = {
     logout: "خروج کاربری",
 };
 
+export const footer = {
+    copyright: "کلیه حقوق محفوظ است.",
+    developer: "محمود حسینی",
+    developerUrl: "http://hosseinimh.com",
+};
+
 export const sidebar = {
     dashboard: "داشبورد",
     editProfile: "ویرایش پروفایل",
@@ -107,8 +95,11 @@ export const loginUserPage = {
 export const usersPage = {
     _title: "کاربران",
     username: "نام کاربری",
+    usernamePlaceholder: "نام کاربری",
     nameFamily: "نام / نام خانوادگی",
-    city: "استان / شهر",
+    nameFamilyPlaceholder: "نام / نام خانوادگی",
+    province: "استان",
+    provinceCity: "استان / شهر",
     role: "نوع کاربری",
     addUser: "افزودن کاربر",
     searchSubmit: "جستجو",

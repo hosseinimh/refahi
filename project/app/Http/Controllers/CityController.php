@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class CityController extends Controller
 {
-    public function __construct(PackagesJsonResponse $response, private CityService $service)
+    public function __construct(PackagesJsonResponse $response, public CityService $service)
     {
         parent::__construct($response);
     }

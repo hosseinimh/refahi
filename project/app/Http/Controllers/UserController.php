@@ -17,16 +17,25 @@ use Illuminate\Http\JsonResponse as HttpJsonResponse;
 
 class UserController extends Controller
 {
-    public function __construct(JsonResponse $response, private UserService $service)
+    public function __construct(JsonResponse $response, public UserService $service)
     {
         parent::__construct($response);
     }
 
     public function index(IndexUsersRequest $request): HttpJsonResponse
     {
+        $provinceController = app()->make(ProvinceController::class);
         $cityId = intval($request->city_id) ?: null;
+        $users = $this->service->getPaginate($request->username, $request->name, $request->name, $cityId, $request->_pn, $request->_pi);
 
-        return $this->onItems($this->service->getPaginate($request->username, $request->name, $request->name, $cityId, $request->_pn, $request->_pi), $this->service->countAll());
+        if ($request->_pn === 1) {
+            $users = $this->collection($users);
+            $provinces = $provinceController->collection($provinceController->service->getAll());
+
+            return $this->onItems(['items' => $users, 'provinces' => $provinces], $this->service->countAll());
+        }
+
+        return $this->onItems($users, $this->service->countAll());
     }
 
     public function showUser(): HttpJsonResponse

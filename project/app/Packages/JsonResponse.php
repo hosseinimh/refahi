@@ -31,7 +31,11 @@ class JsonResponse
     public function itemsResponse($items, $count): HttpJsonResponse
     {
         if ($items) {
-            return $this->okResponse(['items' => $this->entityResource ? $this->entityResource::collection($items) : $items, 'count' => $count]);
+            if (is_array($items) && count(array_keys($items)) > 0) {
+                return $this->okResponse(array_merge($items, ['count' => $count]));
+            } else {
+                return $this->okResponse(['items' => $this->entityResource ? $this->entityResource::collection($items) : $items, 'count' => $count]);
+            }
         }
 
         return $this->errorResponse();
@@ -81,6 +85,11 @@ class JsonResponse
     public function errorResponse(array|null $data = null): HttpJsonResponse
     {
         return $this->handleResult(false, $data);
+    }
+
+    public function collection($items)
+    {
+        return $this->entityResource::collection($items);
     }
 
     private function jsonResponse($data)

@@ -13,34 +13,23 @@ import { addEquipmentTypeSchema as schema } from "../../../validations";
 import { equipmentTypes } from "../../../../constants";
 
 const AddEquipmentType = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm({
+    const form = useForm({
         resolver: yupResolver(schema),
     });
 
     return (
-        <SubmitCancelForm
-            page={"EquipmentTypes"}
-            funcs={funcs}
-            handleSubmit={handleSubmit}
-            errors={errors}
-        >
+        <SubmitCancelForm page={"EquipmentTypes"} funcs={funcs} useForm={form}>
             <InputTextColumn
                 field="name"
-                register={register}
+                useForm={form}
                 strings={strings}
                 columnClassName="col-md-8 col-sm-12 pb-4"
             />
             <InputSelectColumn
                 field="type"
-                register={register}
+                useForm={form}
                 strings={strings}
                 items={equipmentTypes}
-                keyItem={"id"}
-                valueItem={"value"}
             />
         </SubmitCancelForm>
     );

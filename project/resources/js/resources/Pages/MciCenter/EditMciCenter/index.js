@@ -8,50 +8,35 @@ import { editMciCenterPage as strings } from "../../../../constants/strings";
 import { editMciCenterSchema as schema } from "../../../validations";
 
 const EditMciCenter = () => {
-    const {
-        register,
-        setValue,
-        handleSubmit,
-        formState: { errors },
-    } = useForm({
+    const form = useForm({
         resolver: yupResolver(schema),
     });
 
     return (
-        <SubmitCancelForm
-            page={"Provinces"}
-            setValue={setValue}
-            funcs={funcs}
-            handleSubmit={handleSubmit}
-            errors={errors}
-        >
+        <SubmitCancelForm page={"Provinces"} useForm={form} funcs={funcs}>
             <InputTextColumn
                 field="name"
-                register={register}
+                useForm={form}
                 strings={strings}
                 columnClassName="col-md-8 col-sm-12 pb-4"
             />
-            <InputTextColumn
-                field="tel"
-                register={register}
-                strings={strings}
-            />
+            <InputTextColumn field="tel" useForm={form} strings={strings} />
             <InputTextColumn
                 field="address"
-                register={register}
+                useForm={form}
                 strings={strings}
                 columnClassName="col-12 pb-4"
             />
             <InputTextColumn
                 field="longitude"
                 type="number"
-                register={register}
+                useForm={form}
                 strings={strings}
             />
             <InputTextColumn
                 field="latitude"
                 type="number"
-                register={register}
+                useForm={form}
                 strings={strings}
             />
         </SubmitCancelForm>
