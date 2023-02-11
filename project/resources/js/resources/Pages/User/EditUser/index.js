@@ -87,7 +87,7 @@ const EditUser = () => {
                     onChange={(e) => funcs.onType("user")}
                 />
             </div>
-            <input type="hidden" {...register(`city`)} />
+            <input type="hidden" {...form.register(`city`)} />
             {ls?.pageProps?.userType === USER_ROLES.USER && (
                 <>
                     <div className="col-md-6 col-sm-12 pb-4">

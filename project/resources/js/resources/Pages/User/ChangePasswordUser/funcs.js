@@ -21,7 +21,6 @@ import utils from "../../../../utils/Utils";
 
 let _dispatch;
 let _navigate;
-let _setValue;
 let _userId;
 const _lsUser = utils.getLSUser();
 let _callbackUrl;

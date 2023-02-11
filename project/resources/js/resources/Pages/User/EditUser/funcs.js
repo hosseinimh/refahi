@@ -23,7 +23,7 @@ import {
 
 let _dispatch;
 let _navigate;
-let _setValue;
+let _useForm;
 let _ls;
 let _pageProps;
 let _callbackUrl;
@@ -31,10 +31,10 @@ let _modals;
 let _userId;
 let _entity = new Entity();
 
-export const init = (dispatch, navigate, setValue) => {
+export const init = (dispatch, navigate, useForm) => {
     _dispatch = dispatch;
     _navigate = navigate;
-    _setValue = setValue;
+    _useForm = useForm;
     _ls = useSelector((state) => state.layoutReducer);
 
     _callbackUrl = `${basePath}/users`;
@@ -47,8 +47,9 @@ export const onLoad = (params) => {
         action: null,
     };
 
-    _setValue("city", 0);
+    _useForm.setValue("city", 0);
     setUserId(params?.userId);
+
     _dispatch(setTitleAction(strings._title));
     _dispatch(setPagePropsAction(_pageProps));
 
@@ -105,7 +106,7 @@ export const onRemoveCity = () => {
 };
 
 export const onCitySubmit = async (data) => {
-    _setValue("city", data.city);
+    _useForm.setValue("city", data.city);
     await fetchCity(data.city);
     _modals[0].modal.hide();
 };
@@ -211,15 +212,15 @@ const fillForm = async () => {
         return null;
     }
 
-    _setValue("name", result.item.name);
-    _setValue("family", result.item.family);
-    _setValue("nationalCode", result.item.nationalCode);
-    _setValue("personnelNo", result.item.personnelNo);
-    _setValue("mobile", result.item.mobile);
-    _setValue("email", result.item.email);
-    _setValue(result.item.gender === 1 ? "female" : "male", "on");
-    _setValue("active", result.item.isActive);
-    _setValue(
+    _useForm.setValue("name", result.item.name);
+    _useForm.setValue("family", result.item.family);
+    _useForm.setValue("nationalCode", result.item.nationalCode);
+    _useForm.setValue("personnelNo", result.item.personnelNo);
+    _useForm.setValue("mobile", result.item.mobile);
+    _useForm.setValue("email", result.item.email);
+    _useForm.setValue(result.item.gender === 1 ? "female" : "male", "on");
+    _useForm.setValue("active", result.item.isActive);
+    _useForm.setValue(
         result.item.role === USER_ROLES.ADMINISTRATOR
             ? "administrator"
             : "user",

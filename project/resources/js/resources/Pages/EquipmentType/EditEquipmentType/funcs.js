@@ -15,15 +15,15 @@ import { basePath, MESSAGE_CODES, MESSAGE_TYPES } from "../../../../constants";
 
 let _dispatch;
 let _navigate;
-let _setValue;
+let _useForm;
 let _equipmentTypeId;
 let _callbackUrl;
 let _entity = new Entity();
 
-export const init = (dispatch, navigate, setValue) => {
+export const init = (dispatch, navigate, useForm) => {
     _dispatch = dispatch;
     _navigate = navigate;
-    _setValue = setValue;
+    _useForm = useForm;
 };
 
 export const onLoad = (params) => {
@@ -108,8 +108,8 @@ const fillForm = async () => {
 
     _callbackUrl = `${basePath}/equipment_types`;
 
-    _setValue("name", result.item.name);
-    _setValue("type", result.item.type);
+    _useForm.setValue("name", result.item.name);
+    _useForm.setValue("type", result.item.type);
 
     _dispatch(setTitleAction(`${strings._title} [ ${result.item.name} ]`));
 };

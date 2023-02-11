@@ -15,15 +15,15 @@ import { basePath, MESSAGE_CODES, MESSAGE_TYPES } from "../../../../constants";
 
 let _dispatch;
 let _navigate;
-let _setValue;
+let _useForm;
 let _mciCenterId;
 let _callbackUrl;
 let _entity = new Entity();
 
-export const init = (dispatch, navigate, setValue) => {
+export const init = (dispatch, navigate, useForm) => {
     _dispatch = dispatch;
     _navigate = navigate;
-    _setValue = setValue;
+    _useForm = useForm;
 };
 
 export const onLoad = (params) => {
@@ -114,11 +114,11 @@ const fillForm = async () => {
 
     _callbackUrl = `${basePath}/mci_centers/${result?.item?.cityId}`;
 
-    _setValue("name", result.item.name);
-    _setValue("tel", result.item.tel);
-    _setValue("address", result.item.address);
-    _setValue("longitude", result.item.longitude);
-    _setValue("latitude", result.item.latitude);
+    _useForm.setValue("name", result.item.name);
+    _useForm.setValue("tel", result.item.tel);
+    _useForm.setValue("address", result.item.address);
+    _useForm.setValue("longitude", result.item.longitude);
+    _useForm.setValue("latitude", result.item.latitude);
 
     _dispatch(setTitleAction(`${strings._title} [ ${result.item.name} ]`));
 };

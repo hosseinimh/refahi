@@ -16,15 +16,15 @@ import { basePath, MESSAGE_CODES, MESSAGE_TYPES } from "../../../../constants";
 
 let _dispatch;
 let _navigate;
-let _setValue;
+let _useForm;
 let _cityId;
 let _callbackUrl;
 let _entity = new Entity();
 
-export const init = (dispatch, navigate, setValue) => {
+export const init = (dispatch, navigate, useForm) => {
     _dispatch = dispatch;
     _navigate = navigate;
-    _setValue = setValue;
+    _useForm = useForm;
 };
 
 export const onLoad = (params) => {
@@ -33,8 +33,8 @@ export const onLoad = (params) => {
     setCityId(params?.cityId);
     fetchCity();
 
-    _setValue("longitude", "0");
-    _setValue("latitude", "0");
+    _useForm.setValue("longitude", "0");
+    _useForm.setValue("latitude", "0");
 };
 
 export const onLayoutState = () => {};

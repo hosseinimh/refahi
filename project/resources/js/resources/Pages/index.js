@@ -1,4 +1,4 @@
-import Dashboard from "./Dashboard/Dashboard";
+import Dashboard from "./Dashboard";
 import LoginUser from "./User/LoginUser";
 import Users from "./User/Users";
 import AddUser from "./User/AddUser";

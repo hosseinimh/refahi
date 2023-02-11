@@ -20,17 +20,17 @@ import {
 
 let _dispatch;
 let _navigate;
-let _setValue;
+let _useForm;
 let _ls;
 let _pageProps;
 let _callbackUrl;
 let _modals;
 let _entity = new Entity();
 
-export const init = (dispatch, navigate, setValue) => {
+export const init = (dispatch, navigate, useForm) => {
     _dispatch = dispatch;
     _navigate = navigate;
-    _setValue = setValue;
+    _useForm = useForm;
     _ls = useSelector((state) => state.layoutReducer);
 
     _callbackUrl = `${basePath}/users`;
@@ -43,7 +43,8 @@ export const onLoad = (params) => {
         action: null,
     };
 
-    _setValue("city", 0);
+    _useForm.setValue("city", 0);
+
     _dispatch(setTitleAction(strings._title));
     _dispatch(setPagePropsAction(_pageProps));
 };
@@ -88,7 +89,8 @@ export const onRemoveCity = () => {
 export const onCitySubmit = async (data) => {
     _dispatch(setLoadingAction(true));
 
-    _setValue("city", data.city);
+    _useForm.setValue("city", data.city);
+
     await fetchCity(data.city);
     _modals[0].modal.hide();
 

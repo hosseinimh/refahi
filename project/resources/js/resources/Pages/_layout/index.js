@@ -1,4 +1,5 @@
-import Page from "./Page";
-import InsertPage from "./InsertPage";
+import LoginPageLayout from "./LoginPageLayout";
+import PageLayout from "./PageLayout";
+import FormPageLayout from "./FormPageLayout";
 
-export { Page, InsertPage };
+export { LoginPageLayout, PageLayout, FormPageLayout };

@@ -7,7 +7,7 @@ import { InputTextColumn } from "../../../components";
 import * as funcs from "./funcs";
 import { loginUserPage as strings } from "../../../../constants/strings";
 import { loginUserSchema as schema } from "../../../validations";
-import LoginPage from "../../_layout/LoginPage";
+import { LoginPageLayout } from "../../_layout";
 
 const LoginUser = () => {
     const form = useForm({
@@ -15,7 +15,7 @@ const LoginUser = () => {
     });
 
     return (
-        <LoginPage
+        <LoginPageLayout
             page={"Users"}
             strings={strings}
             useForm={form}
@@ -34,7 +34,7 @@ const LoginUser = () => {
                     icon={<BsFileEarmarkLock2 />}
                 />
             </div>
-        </LoginPage>
+        </LoginPageLayout>
     );
 };
 

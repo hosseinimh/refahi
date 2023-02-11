@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router";
+import react from "react";
+import { useSelector } from "react-redux";
 
 import { general } from "../../../constants/strings";
-import { setPagePropsAction } from "../../../state/layout/layoutActions";
-import { clearMessageAction } from "../../../state/message/messageActions";
-import { InsertPage } from "../../Pages/_layout";
+import { FormPageLayout } from "../../Pages/_layout";
 
 const FormPage = ({
     children,
@@ -15,59 +12,16 @@ const FormPage = ({
     useForm,
     modals = null,
 }) => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
     const ls = useSelector((state) => state.layoutReducer);
-    const [params, setParams] = useState({});
-    const newParams = useParams();
-
-    funcs.init(dispatch, navigate, useForm.setValue);
-
-    if (JSON.stringify(params) !== JSON.stringify(newParams)) {
-        setParams(newParams);
-    }
-
-    useEffect(() => {
-        funcs.onLayoutState();
-    }, [ls]);
-
-    useEffect(() => {
-        funcs.onLoad(params);
-    }, [params]);
-
-    useEffect(() => {
-        loadModals();
-    }, []);
-
-    const loadModals = () => {
-        let modalObjs = [];
-
-        modals?.map((modal) => {
-            const modalElement = document.getElementById(modal.id);
-            const m = new coreui.Modal(modalElement);
-            const form = modal?.useForm;
-
-            modalElement.addEventListener("hidden.coreui.modal", () => {
-                dispatch(
-                    setPagePropsAction({
-                        item: null,
-                        action: null,
-                    })
-                );
-                dispatch(clearMessageAction());
-                form?.reset();
-            });
-
-            modalObjs = [{ modal: m, form }, ...modalObjs];
-        });
-
-        if (funcs?.loadModals instanceof Function) {
-            funcs.loadModals(modalObjs);
-        }
-    };
 
     return (
-        <InsertPage page={page} strings={strings} useForm={useForm}>
+        <FormPageLayout
+            page={page}
+            strings={strings}
+            funcs={funcs}
+            useForm={useForm}
+            modals={modals}
+        >
             <div className="row">
                 <div className="col-12">
                     <div className="card mb-4">
@@ -101,7 +55,7 @@ const FormPage = ({
                     </div>
                 </div>
             </div>
-        </InsertPage>
+        </FormPageLayout>
     );
 };
 
