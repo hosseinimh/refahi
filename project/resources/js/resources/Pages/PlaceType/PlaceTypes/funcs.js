@@ -93,15 +93,15 @@ const editAction = (item) => {
     }
 };
 
-const fillForm = async (data = null) => {
+const fillForm = async () => {
     _dispatch(setLoadingAction(true));
 
-    await fetchPlaceTypes(data);
+    await fetchPageData();
 
     _dispatch(setLoadingAction(false));
 };
 
-const fetchPlaceTypes = async (data = null) => {
+const fetchPageData = async () => {
     let result = await _entity.getPaginate(_ls?.pageProps?.pageNumber ?? 1);
 
     if (result === null) {

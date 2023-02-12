@@ -32,19 +32,7 @@ export const onLoad = (params) => {
 
     _callbackUrl = `${basePath}/place_types`;
 
-    if (_placeTypeId > 0) {
-        fillForm();
-    } else {
-        _dispatch(
-            setMessageAction(
-                general.itemNotFound,
-                MESSAGE_TYPES.ERROR,
-                MESSAGE_CODES.ITEM_NOT_FOUND,
-                false
-            )
-        );
-        _navigate(_callbackUrl);
-    }
+    fillForm();
 };
 
 export const onLayoutState = () => {};
@@ -97,6 +85,20 @@ const fillForm = async () => {
 };
 
 const fetchPageData = async () => {
+    if (_placeTypeId <= 0) {
+        _dispatch(
+            setMessageAction(
+                general.itemNotFound,
+                MESSAGE_TYPES.ERROR,
+                MESSAGE_CODES.ITEM_NOT_FOUND,
+                false
+            )
+        );
+        _navigate(_callbackUrl);
+
+        return null;
+    }
+
     let result = await _entity.get(_placeTypeId);
 
     if (result === null) {
