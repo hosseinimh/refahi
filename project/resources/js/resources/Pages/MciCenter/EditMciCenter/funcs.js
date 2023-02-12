@@ -96,6 +96,27 @@ const setMciCenterId = (mciCenterId) => {
 };
 
 const fillForm = async () => {
+    _dispatch(setLoadingAction(true));
+
+    await fetchPageData();
+
+    _dispatch(setLoadingAction(false));
+};
+
+const fetchPageData = async () => {
+    if (_mciCenterId <= 0) {
+        _dispatch(
+            setMessageAction(
+                general.itemNotFound,
+                MESSAGE_TYPES.ERROR,
+                MESSAGE_CODES.ITEM_NOT_FOUND,
+                false
+            )
+        );
+        _dispatch(setLoadingAction(false));
+        _navigate(_callbackUrl);
+    }
+
     let result = await _entity.get(_mciCenterId);
 
     if (result === null) {
@@ -120,5 +141,9 @@ const fillForm = async () => {
     _useForm.setValue("longitude", result.item.longitude);
     _useForm.setValue("latitude", result.item.latitude);
 
-    _dispatch(setTitleAction(`${strings._title} [ ${result.item.name} ]`));
+    _dispatch(
+        setTitleAction(
+            `${strings._title} [ ${result.item.name} - ${result.item.provinceName} / ${result.item.cityName} ]`
+        )
+    );
 };

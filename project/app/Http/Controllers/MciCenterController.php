@@ -20,7 +20,13 @@ class MciCenterController extends Controller
 
     public function index(City $city, Request $request): HttpJsonResponse
     {
-        return $this->onItems($this->service->getPaginate($city->id, $request->_pn, $request->_pi), $this->service->count($city->id));
+        $provinceController = app()->make(ProvinceController::class);
+        $province = $provinceController->resource($provinceController->service->get($city->province_id));
+
+        $cityController = app()->make(CityController::class);
+        $city = $cityController->resource($city);
+
+        return $this->onItems(['items' => $this->service->getPaginate($city->id, $request->_pn, $request->_pi), 'province' => $province, 'city' => $city], $this->service->count($city->id));
     }
 
     public function show(Model $model): HttpJsonResponse

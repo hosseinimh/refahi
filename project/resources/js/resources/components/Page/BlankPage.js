@@ -1,6 +1,6 @@
 import React from "react";
 
-import { PageLayout } from "../../Pages/_layout";
+import { PageLayout } from "../";
 
 const BlankPage = ({ page, strings, funcs, useForm, children }) => {
     return (

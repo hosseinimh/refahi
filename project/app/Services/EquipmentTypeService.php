@@ -17,7 +17,7 @@ class EquipmentTypeService
         return Model::orderBy('type', 'ASC')->orderBy('name', 'ASC')->orderBy('id', 'ASC')->skip(($page - 1) * $pageItems)->take($pageItems)->get();
     }
 
-    public function getAll(int $type): mixed
+    public function getAll(int $type = 0): mixed
     {
         if ($type >= EquipmentType::TYPE_1 && $type <= EquipmentType::TYPE_8) {
             return Model::where('type', $type)->orderBy('type', 'ASC')->orderBy('name', 'ASC')->orderBy('id', 'ASC')->get();

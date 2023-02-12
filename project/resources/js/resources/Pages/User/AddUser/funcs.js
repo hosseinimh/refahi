@@ -40,13 +40,17 @@ export const onLoad = (params) => {
     _pageProps = {
         userType: USER_ROLES.ADMINISTRATOR,
         city: null,
+        provinces: null,
+        cities: null,
         action: null,
     };
 
     _useForm.setValue("city", 0);
+    _dispatch(setPagePropsAction(_pageProps));
+
+    fillForm();
 
     _dispatch(setTitleAction(strings._title));
-    _dispatch(setPagePropsAction(_pageProps));
 };
 
 export const onLayoutState = () => {
@@ -83,18 +87,20 @@ export const onSelectCity = () => {
 };
 
 export const onRemoveCity = () => {
+    _useForm.setValue("city", 0);
     _dispatch(setPagePropsAction({ city: null }));
 };
 
 export const onCitySubmit = async (data) => {
-    _dispatch(setLoadingAction(true));
+    const cities = _ls?.pageProps?.cities?.filter(
+        (city) => city.id == data.modalCity
+    );
 
-    _useForm.setValue("city", data.city);
-
-    await fetchCity(data.city);
-    _modals[0].modal.hide();
-
-    _dispatch(setLoadingAction(false));
+    if (cities?.length > 0) {
+        _dispatch(setPagePropsAction({ city: cities[0] }));
+        _useForm.setValue("city", data.modalCity);
+        _modals[0].modal.hide();
+    }
 };
 
 export const onSubmit = async (data) => {
@@ -128,7 +134,6 @@ export const onSubmit = async (data) => {
                   data.name,
                   data.family,
                   data.nationalCode,
-                  data.personnelNo,
                   data.mobile,
                   data.email,
                   data.gender ? 1 : 0,
@@ -182,11 +187,35 @@ const selectCityAction = () => {
     _modals[0].modal.show();
 };
 
-const fetchCity = async (id) => {
-    const city = new City();
-    let result = await city.get(id);
+const fillForm = async () => {
+    _dispatch(setLoadingAction(true));
 
-    if (result !== null) {
-        _dispatch(setPagePropsAction({ city: result.item }));
+    await fetchPageData();
+
+    _dispatch(setLoadingAction(false));
+};
+
+const fetchPageData = async () => {
+    const city = new City();
+    let result = await city.getAllWithProvinces();
+
+    if (result === null) {
+        _dispatch(setPagePropsAction({ cities: null }));
+        _dispatch(
+            setMessageAction(
+                city.errorMessage,
+                MESSAGE_TYPES.ERROR,
+                city.errorCode
+            )
+        );
+
+        return;
     }
+
+    _dispatch(
+        setPagePropsAction({
+            provinces: result.provinces,
+            cities: result.items,
+        })
+    );
 };

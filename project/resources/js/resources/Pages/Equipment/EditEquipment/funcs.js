@@ -40,19 +40,7 @@ export const onLoad = (params) => {
 
     _callbackUrl = `${basePath}/equipments`;
 
-    if (_equipmentId > 0) {
-        fillForm();
-    } else {
-        _dispatch(
-            setMessageAction(
-                general.itemNotFound,
-                MESSAGE_TYPES.ERROR,
-                MESSAGE_CODES.ITEM_NOT_FOUND,
-                false
-            )
-        );
-        _navigate(_callbackUrl);
-    }
+    fillForm();
 };
 
 export const onLayoutState = () => {};
@@ -110,7 +98,27 @@ const setEquipmentId = (equipmentId) => {
 const fillForm = async () => {
     _dispatch(setLoadingAction(true));
 
-    await fetchEquipmentTypes();
+    await fetchPageData();
+
+    _dispatch(setLoadingAction(false));
+};
+
+const fetchPageData = async () => {
+    if (_equipmentId <= 0) {
+        _dispatch(
+            setMessageAction(
+                general.itemNotFound,
+                MESSAGE_TYPES.ERROR,
+                MESSAGE_CODES.ITEM_NOT_FOUND,
+                false
+            )
+        );
+        _dispatch(setLoadingAction(false));
+        _navigate(_callbackUrl);
+
+        return null;
+    }
+
     let result = await _entity.get(_equipmentId);
 
     if (result === null) {
@@ -130,23 +138,13 @@ const fillForm = async () => {
 
     _callbackUrl = `${basePath}/equipments`;
 
-    onChange(result.item.equipmentType);
     _useForm.setValue("equipmentType", result.item.equipmentType);
     _useForm.setValue("name", result.item.name);
     _useForm.setValue("assetNo", result.item.assetNo);
 
+    _pageProps = { ..._pageProps, equipmentTypes: result?.equipmentTypes };
     _dispatch(setTitleAction(`${strings._title} [ ${result.item.name} ]`));
+    onChange(result.item.equipmentType);
     _dispatch(setPagePropsAction({ type: result.item.equipmentTypeId }));
     _dispatch(setLoadingAction(false));
-};
-
-const fetchEquipmentTypes = async () => {
-    const equipmentType = new EquipmentType();
-    const result = await equipmentType.getAll();
-
-    if (result === null) {
-        _pageProps = { ..._pageProps, equipmentTypes: null };
-    } else {
-        _pageProps = { ..._pageProps, equipmentTypes: result?.items };
-    }
 };

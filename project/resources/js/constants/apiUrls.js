@@ -12,6 +12,7 @@ export const USERS_API_URLS = {
     LOGIN: `${SERVER_URL}/users/login`,
     LOGOUT: `${SERVER_URL}/users/logout`,
     FETCH_USER: `${SERVER_URL}/users/show`,
+    FETCH_USER_CITIES: `${SERVER_URL}/users/show/cities`,
     FETCH_USERS: `${SERVER_URL}/users`,
     STORE_USER: `${SERVER_URL}/users/store`,
     UPDATE_USER: `${SERVER_URL}/users/update`,
@@ -26,6 +27,7 @@ export const PROVINCES_API_URLS = {
 export const CITIES_API_URLS = {
     FETCH_CITY: `${SERVER_URL}/cities/show`,
     FETCH_CITIES: `${SERVER_URL}/cities`,
+    FETCH_CITIES_ALL: `${SERVER_URL}/cities/all`,
 };
 
 export const MCI_CENTERS_API_URLS = {

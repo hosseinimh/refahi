@@ -66,7 +66,7 @@ const MciCenters = () => {
             strings={strings}
             table={{ renderHeader, renderItems, renderFooter }}
             funcs={funcs}
-            backUrl={`${basePath}/cities/${ls?.pageProps?.city?.provinceId}`}
+            backUrl={`${basePath}/cities/${ls?.pageProps?.province?.id}`}
         />
     );
 };

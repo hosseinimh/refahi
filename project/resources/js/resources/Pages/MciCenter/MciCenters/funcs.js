@@ -18,6 +18,7 @@ let _navigate;
 let _ls;
 let _cityId;
 let _pageProps;
+let _callbackUrl;
 let _entity = new Entity();
 
 export const init = (dispatch, navigate) => {
@@ -30,11 +31,13 @@ export const onLoad = (params) => {
     _pageProps = {
         pageNumber: 1,
         itemsCount: 0,
+        province: null,
         city: null,
         item: null,
         items: null,
         action: null,
     };
+    _callbackUrl = `${basePath}/provinces`;
 
     _dispatch(setTitleAction(strings._title));
     _dispatch(setPagePropsAction(_pageProps));
@@ -106,13 +109,12 @@ const editAction = (item) => {
 const fillForm = async (data = null) => {
     _dispatch(setLoadingAction(true));
 
-    await fetchCity();
-    await fetchMciCenters(data);
+    await fetchPageData(data);
 
     _dispatch(setLoadingAction(false));
 };
 
-const fetchCity = async () => {
+const fetchPageData = async () => {
     if (_cityId <= 0) {
         _dispatch(
             setMessageAction(
@@ -122,37 +124,12 @@ const fetchCity = async () => {
                 false
             )
         );
-        _navigate(`${basePath}/provinces`);
+        _dispatch(setLoadingAction(false));
+        _navigate(_callbackUrl);
 
         return null;
     }
 
-    const city = new City();
-    let result = await city.get(_cityId);
-
-    if (result === null) {
-        _dispatch(
-            setMessageAction(
-                general.itemNotFound,
-                MESSAGE_TYPES.ERROR,
-                MESSAGE_CODES.ITEM_NOT_FOUND,
-                false
-            )
-        );
-        _navigate(`${basePath}/provinces`);
-
-        return null;
-    }
-
-    _dispatch(setPagePropsAction({ city: result?.item }));
-    _dispatch(
-        setTitleAction(
-            `${strings._title} [ ${result?.item?.provinceName} / ${result?.item?.name} ]`
-        )
-    );
-};
-
-const fetchMciCenters = async (data = null) => {
     let result = await _entity.getPaginate(
         _cityId,
         _ls?.pageProps?.pageNumber ?? 1
@@ -171,7 +148,19 @@ const fetchMciCenters = async (data = null) => {
         return;
     }
 
+    _callbackUrl = `${basePath}/cities/${result.province.id}`;
+
     _dispatch(
-        setPagePropsAction({ items: result.items, itemsCount: result.count })
+        setTitleAction(
+            `${strings._title} [ ${result.province.name} / ${result.city.name} ]`
+        )
+    );
+    _dispatch(
+        setPagePropsAction({
+            items: result.items,
+            province: result.province,
+            city: result.city,
+            itemsCount: result.count,
+        })
     );
 };

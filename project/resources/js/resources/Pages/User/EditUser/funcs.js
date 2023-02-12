@@ -44,6 +44,8 @@ export const onLoad = (params) => {
     _pageProps = {
         userType: USER_ROLES.ADMINISTRATOR,
         city: null,
+        provinces: null,
+        cities: null,
         action: null,
     };
 
@@ -82,6 +84,10 @@ export const onLayoutState = () => {
             selectCityAction();
 
             return;
+        case "CITIES":
+            onCitySubmit({ modalCity: _ls?.pageProps?.city });
+
+            return;
     }
 };
 
@@ -102,13 +108,20 @@ export const onSelectCity = () => {
 };
 
 export const onRemoveCity = () => {
+    _useForm.setValue("city", 0);
     _dispatch(setPagePropsAction({ city: null }));
 };
 
 export const onCitySubmit = async (data) => {
-    _useForm.setValue("city", data.city);
-    await fetchCity(data.city);
-    _modals[0].modal.hide();
+    const cities = _ls?.pageProps?.cities?.filter(
+        (city) => city.id == data.modalCity
+    );
+
+    if (cities?.length > 0) {
+        _dispatch(setPagePropsAction({ city: cities[0] }));
+        _useForm.setValue("city", data.modalCity);
+        _modals[0].modal.hide();
+    }
 };
 
 export const onSubmit = async (data) => {
@@ -135,7 +148,7 @@ export const onSubmit = async (data) => {
 
     let result =
         _ls?.pageProps?.userType === USER_ROLES.ADMINISTRATOR
-            ? await _entity.updateAdmininistrator(
+            ? await _entity.updateAdministrator(
                   _userId,
                   data.name,
                   data.family,
@@ -192,10 +205,43 @@ const setUserId = (userId) => {
     _userId = !isNaN(userId) && userId > 0 ? userId : 0;
 };
 
+const citiesAction = () => {
+    _dispatch(
+        setPagePropsAction({
+            action: "CITIES",
+        })
+    );
+};
+
+const selectCityAction = () => {
+    _modals[0].modal.show();
+};
+
 const fillForm = async () => {
     _dispatch(setLoadingAction(true));
 
-    let result = await _entity.getAdmininistrator(_userId);
+    await fetchPageData();
+
+    _dispatch(setLoadingAction(false));
+};
+
+const fetchPageData = async () => {
+    if (_userId <= 0) {
+        _dispatch(
+            setMessageAction(
+                general.itemNotFound,
+                MESSAGE_TYPES.ERROR,
+                MESSAGE_CODES.ITEM_NOT_FOUND,
+                false
+            )
+        );
+        _dispatch(setLoadingAction(false));
+        _navigate(_callbackUrl);
+
+        return null;
+    }
+
+    let result = await _entity.getAdministratorWithCities(_userId);
 
     if (result === null) {
         _dispatch(
@@ -229,7 +275,15 @@ const fillForm = async () => {
     onType(
         result.item.role === USER_ROLES.ADMINISTRATOR ? "administrator" : "user"
     );
-    onCitySubmit({ city: result.item.cityId });
+
+    _dispatch(
+        setPagePropsAction({
+            city: result.item.cityId,
+            provinces: result.provinces,
+            cities: result.cities,
+        })
+    );
+    citiesAction();
 
     _dispatch(
         setTitleAction(
@@ -237,17 +291,4 @@ const fillForm = async () => {
         )
     );
     _dispatch(setLoadingAction(false));
-};
-
-const selectCityAction = () => {
-    _modals[0].modal.show();
-};
-
-const fetchCity = async (id) => {
-    const city = new City();
-    let result = await city.get(id);
-
-    if (result !== null) {
-        _dispatch(setPagePropsAction({ city: result.item }));
-    }
 };

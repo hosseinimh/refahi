@@ -7,7 +7,6 @@ use App\Models\City as Model;
 use App\Packages\JsonResponse as PackagesJsonResponse;
 use App\Services\CityService;
 use Illuminate\Http\JsonResponse as HttpJsonResponse;
-use Illuminate\Http\Request;
 
 class CityController extends Controller
 {
@@ -16,9 +15,20 @@ class CityController extends Controller
         parent::__construct($response);
     }
 
-    public function index(Province $province, Request $request): HttpJsonResponse
+    public function index(Province $province): HttpJsonResponse
     {
-        return $this->onItems($this->service->getAll($province->id));
+        $provinceController = app()->make(ProvinceController::class);
+        $province = $provinceController->resource($provinceController->service->get($province->id));
+
+        return $this->onItems(['items' => $this->service->getAll($province->id), 'province' => $province]);
+    }
+
+    public function indexAll(): HttpJsonResponse
+    {
+        $provinceController = app()->make(ProvinceController::class);
+        $provinces = $provinceController->collection($provinceController->service->getAll());
+
+        return $this->onItems(['items' => $this->collection($this->service->getAll()), 'provinces' => $provinces]);
     }
 
     public function show(Model $model): HttpJsonResponse

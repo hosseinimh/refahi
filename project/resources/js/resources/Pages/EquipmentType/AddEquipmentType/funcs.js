@@ -56,6 +56,7 @@ export const onSubmit = async (data) => {
         )
     );
 
+    _dispatch(setLoadingAction(false));
     _navigate(_callbackUrl);
 };
 

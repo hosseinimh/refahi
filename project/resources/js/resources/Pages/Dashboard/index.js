@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import Page from "../_layout/PageLayout";
 import * as funcs from "./funcs";
 import { dashboardPage as strings } from "../../../constants/strings";
 import utils from "../../../utils/Utils";

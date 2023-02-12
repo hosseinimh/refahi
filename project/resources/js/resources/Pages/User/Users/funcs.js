@@ -125,7 +125,7 @@ const fillForm = async (data = null) => {
     _dispatch(setLoadingAction(false));
 };
 
-const fetchPageData = async (data = null) => {
+const fetchPageData = async (data) => {
     let result = await _entity.getPaginate(
         data?.username ?? "",
         data?.name ?? "",

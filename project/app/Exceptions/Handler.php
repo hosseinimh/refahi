@@ -6,6 +6,7 @@ use App\Constants\ErrorCode;
 use App\Constants\Theme;
 use App\Jobs\HandleErrorJob;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Validation\ValidationException;
@@ -63,6 +64,14 @@ class Handler extends ExceptionHandler
         if ($exception instanceof AuthenticationException || $exception instanceof TokenMismatchException) {
             if ($request->expectsJson()) {
                 return response()->json(['_result' => '0', '_error' => __('user.not_authorized'), '_errorCode' => ErrorCode::USER_NOT_AUTHORIZED], 200);
+            }
+
+            return redirect(Theme::LOGIN_URL);
+        }
+
+        if ($exception instanceof ModelNotFoundException) {
+            if ($request->expectsJson()) {
+                return response()->json(['_result' => '0', '_error' => __('general.item_not_found'), '_errorCode' => ErrorCode::ITEM_NOT_FOUND], 200);
             }
 
             return redirect(Theme::LOGIN_URL);

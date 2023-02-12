@@ -66,6 +66,7 @@ export const onSubmit = async (data) => {
         )
     );
 
+    _dispatch(setLoadingAction(false));
     _navigate(_callbackUrl);
 };
 
@@ -83,17 +84,15 @@ export const onChange = (e) => {
     );
 };
 
-const fillForm = async (data = null) => {
+const fillForm = async () => {
     _dispatch(setLoadingAction(true));
 
-    await fetchEquipmentTypes(data);
+    await fetchPageData();
 
     _dispatch(setLoadingAction(false));
 };
 
-const fetchEquipmentTypes = async () => {
-    _dispatch(setLoadingAction(false));
-
+const fetchPageData = async () => {
     const equipmentType = new EquipmentType();
     const result = await equipmentType.getAll();
 
@@ -102,6 +101,4 @@ const fetchEquipmentTypes = async () => {
     } else {
         _pageProps = { ..._pageProps, equipmentTypes: result?.items };
     }
-
-    _dispatch(setLoadingAction(false));
 };

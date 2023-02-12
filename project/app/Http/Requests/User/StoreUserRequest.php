@@ -25,7 +25,7 @@ class StoreUserRequest extends FormRequest
             'name' => 'required|min:3|max:50',
             'family' => 'required|min:3|max:50',
             'national_code' => 'required|digits:10',
-            'personnel_no' => 'required|digits_between:5,10',
+            'personnel_no' => 'exclude_if:role,2|required|digits_between:5,10',
             'mobile' => 'required|digits:11',
             'email' => 'email|max:50',
         ];

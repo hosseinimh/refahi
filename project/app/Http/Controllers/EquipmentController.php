@@ -25,7 +25,10 @@ class EquipmentController extends Controller
 
     public function show(Model $model): HttpJsonResponse
     {
-        return $this->onItem($this->service->get($model->id));
+        $equipmentTypeController = app()->make(EquipmentTypeController::class);
+        $equipmentTypes = $equipmentTypeController->collection($equipmentTypeController->service->getAll());
+
+        return $this->response->okResponse(['item' => $this->resource($this->service->get($model->id)), 'equipmentTypes' => $equipmentTypes]);;
     }
 
     public function store(EquipmentType $equipmentType, StoreRequest $request): HttpJsonResponse

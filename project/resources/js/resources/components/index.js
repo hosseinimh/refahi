@@ -1,3 +1,8 @@
+//Layout
+import FormPageLayout from "./Layout/FormPageLayout";
+import LoginPageLayout from "./Layout/LoginPageLayout";
+import PageLayout from "./Layout/PageLayout";
+
 //Section
 import LoginHeader from "./Section/LoginHeader";
 import LoginFooter from "./Section/LoginFooter";
@@ -37,6 +42,9 @@ import ListPage from "./Page/ListPage";
 import FormPage from "./Page/FormPage";
 
 export {
+    FormPageLayout,
+    LoginPageLayout,
+    PageLayout,
     LoginHeader,
     LoginFooter,
     Header,

@@ -1,4 +1,4 @@
-import { USERS_API_URLS as API_URLS } from "../../constants";
+import { USERS_API_URLS as API_URLS, USER_ROLES } from "../../constants";
 import utils from "../../utils/Utils";
 import Entity from "./Entity";
 
@@ -21,8 +21,12 @@ export class User extends Entity {
         return await this.handlePost(API_URLS.FETCH_USER);
     }
 
-    async getAdmininistrator(id) {
+    async getAdministrator(id) {
         return await this.handlePost(API_URLS.FETCH_USER + "/" + id);
+    }
+
+    async getAdministratorWithCities(id) {
+        return await this.handlePost(API_URLS.FETCH_USER_CITIES + "/" + id);
     }
 
     async storeUser(
@@ -61,7 +65,6 @@ export class User extends Entity {
         name,
         family,
         nationalCode,
-        personnelNo,
         mobile,
         email,
         gender,
@@ -74,9 +77,9 @@ export class User extends Entity {
             name: name,
             family: family,
             national_code: nationalCode,
-            personnel_no: personnelNo,
             mobile: mobile,
             email: email,
+            role: USER_ROLES.ADMINISTRATOR,
             gender: gender,
             is_active: isActive,
         });
@@ -109,12 +112,11 @@ export class User extends Entity {
         );
     }
 
-    async updateAdmininistrator(
+    async updateAdministrator(
         id,
         name,
         family,
         nationalCode,
-        personnelNo,
         mobile,
         email,
         gender,
@@ -127,6 +129,7 @@ export class User extends Entity {
             personnel_no: personnelNo,
             mobile: mobile,
             email: email,
+            role: USER_ROLES.ADMINISTRATOR,
             gender: gender,
             is_active: isActive,
         });

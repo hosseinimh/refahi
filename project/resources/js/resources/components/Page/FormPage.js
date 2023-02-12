@@ -2,7 +2,7 @@ import react from "react";
 import { useSelector } from "react-redux";
 
 import { general } from "../../../constants/strings";
-import { FormPageLayout } from "../../Pages/_layout";
+import { FormPageLayout } from "../";
 
 const FormPage = ({
     children,

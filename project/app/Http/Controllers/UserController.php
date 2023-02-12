@@ -48,9 +48,19 @@ class UserController extends Controller
         return $this->onItem($this->service->get($model->id));
     }
 
+    public function showAdministratorWithAllCities(Model $model): HttpJsonResponse
+    {
+        $provinceController = app()->make(ProvinceController::class);
+        $cityController = app()->make(CityController::class);
+        $provinces = $provinceController->collection($provinceController->service->getAll());
+        $cities = $cityController->collection($cityController->service->getAll());
+
+        return $this->onOk(['item' => $this->resource($this->service->get($model->id)), 'provinces' => $provinces, 'cities' => $cities]);
+    }
+
     public function storeAdministrator(StoreUserRequest $request): HttpJsonResponse
     {
-        return $this->onStore($this->service->store($request->username, $request->password, $request->name, $request->family, $request->national_code, $request->personnel_no, $request->mobile, $request->email, 0, Role::ADMINISTRATOR, $request->gender, $request->is_active));
+        return $this->onStore($this->service->store($request->username, $request->password, $request->name, $request->family, $request->national_code, '', $request->mobile, $request->email, 0, Role::ADMINISTRATOR, $request->gender, $request->is_active));
     }
 
     public function storeUser(City $city, StoreUserRequest $request): HttpJsonResponse
@@ -60,7 +70,7 @@ class UserController extends Controller
 
     public function updateAdministrator(Model $model, UpdateUserRequest $request): HttpJsonResponse
     {
-        return $this->onUpdate($this->service->update($model, $request->name, $request->family, $request->national_code, $request->personnel_no, $request->mobile, $request->email, 0, Role::ADMINISTRATOR, $request->gender, $request->is_active));
+        return $this->onUpdate($this->service->update($model, $request->name, $request->family, $request->national_code, '', $request->mobile, $request->email, 0, Role::ADMINISTRATOR, $request->gender, $request->is_active));
     }
 
     public function updateUser(Model $model, City $city, UpdateUserRequest $request): HttpJsonResponse

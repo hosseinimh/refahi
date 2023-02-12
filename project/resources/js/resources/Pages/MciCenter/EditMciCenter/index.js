@@ -23,7 +23,10 @@ const EditMciCenter = () => {
                 field="name"
                 columnClassName="col-md-8 col-sm-12 pb-4"
             />
-            <InputTextColumn field="tel" />
+            <InputTextColumn
+                field="tel"
+                columnClassName="col-md-4 col-sm-12 pb-4"
+            />
             <InputTextColumn field="address" columnClassName="col-12 pb-4" />
             <InputTextColumn field="longitude" type="number" />
             <InputTextColumn field="latitude" type="number" />

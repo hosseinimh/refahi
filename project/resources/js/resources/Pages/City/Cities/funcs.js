@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 import { basePath, MESSAGE_CODES, MESSAGE_TYPES } from "../../../../constants";
 import { general, citiesPage as strings } from "../../../../constants/strings";
-import { Province, City as Entity } from "../../../../http/entities";
+import { City as Entity } from "../../../../http/entities";
 import {
     setLoadingAction,
     setPagePropsAction,
@@ -28,7 +28,7 @@ export const onLoad = (params) => {
     setProvinceId(params?.provinceId);
     _dispatch(
         setPagePropsAction({
-            provinceId: null,
+            province: null,
             item: null,
             items: null,
             action: null,
@@ -82,16 +82,15 @@ const setProvinceId = (provinceId) => {
     _provinceId = !isNaN(provinceId) && provinceId > 0 ? provinceId : 0;
 };
 
-const fillForm = async (data = null) => {
+const fillForm = async () => {
     _dispatch(setLoadingAction(true));
 
-    await fetchProvince();
-    await fetchCities(data);
+    await fetchPageData();
 
     _dispatch(setLoadingAction(false));
 };
 
-const fetchProvince = async () => {
+const fetchPageData = async () => {
     if (_provinceId <= 0) {
         _dispatch(
             setMessageAction(
@@ -101,33 +100,12 @@ const fetchProvince = async () => {
                 false
             )
         );
+        _dispatch(setLoadingAction(false));
         _navigate(`${basePath}/provinces`);
 
         return null;
     }
 
-    const province = new Province();
-    let result = await province.get(_provinceId);
-
-    if (result === null) {
-        _dispatch(
-            setMessageAction(
-                general.itemNotFound,
-                MESSAGE_TYPES.ERROR,
-                MESSAGE_CODES.ITEM_NOT_FOUND,
-                false
-            )
-        );
-        _navigate(`${basePath}/provinces`);
-
-        return null;
-    }
-
-    _dispatch(setPagePropsAction({ province: result?.item }));
-    _dispatch(setTitleAction(`${strings._title} [ ${result?.item?.name} ]`));
-};
-
-const fetchCities = async (data = null) => {
     let result = await _entity.getAll(_provinceId);
 
     if (result === null) {
@@ -143,5 +121,8 @@ const fetchCities = async (data = null) => {
         return;
     }
 
-    _dispatch(setPagePropsAction({ items: result.items }));
+    _dispatch(
+        setPagePropsAction({ items: result.items, provice: result.province })
+    );
+    _dispatch(setTitleAction(`${strings._title} [ ${result.province.name} ]`));
 };

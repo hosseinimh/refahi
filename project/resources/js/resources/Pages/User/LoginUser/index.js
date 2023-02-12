@@ -3,11 +3,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { BsFileEarmarkLock2, BsPhone } from "react-icons/bs";
 
-import { InputTextColumn } from "../../../components";
+import { InputTextColumn, LoginPageLayout } from "../../../components";
 import * as funcs from "./funcs";
 import { loginUserPage as strings } from "../../../../constants/strings";
 import { loginUserSchema as schema } from "../../../validations";
-import { LoginPageLayout } from "../../_layout";
 
 const LoginUser = () => {
     const form = useForm({

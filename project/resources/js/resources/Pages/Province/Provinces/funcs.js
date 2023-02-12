@@ -69,15 +69,15 @@ const citiesAction = (item) => {
     }
 };
 
-const fillForm = async (data = null) => {
+const fillForm = async () => {
     _dispatch(setLoadingAction(true));
 
-    await fetchProvinces(data);
+    await fetchPageData();
 
     _dispatch(setLoadingAction(false));
 };
 
-const fetchProvinces = async (data = null) => {
+const fetchPageData = async () => {
     let result = await _entity.getAll();
 
     if (result === null) {

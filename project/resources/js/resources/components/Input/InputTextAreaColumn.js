@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 const InputTextAreaColumn = ({
     field,
     useForm,
-    columnClassName = "col-12 pb-4",
+    columnClassName = "col-md-3 col-12 pb-4",
     strings,
 }) => {
     const ls = useSelector((state) => state.layoutReducer);

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
 import { general } from "../../../constants/strings";
-import { PageLayout } from "../../Pages/_layout";
+import { PageLayout } from "../";
 import Table from "../Table/Table";
 
 const ListPage = ({

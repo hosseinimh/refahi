@@ -54,30 +54,18 @@ const AddUser = () => {
                 type="password"
                 inputStyle={{ textAlign: "left" }}
             />
-            <InputTextColumn
-                field="name"
-                columnClassName="col-md-6 col-sm-12 pb-4"
-            />
-            <InputTextColumn
-                field="family"
-                columnClassName="col-md-6 col-sm-12 pb-4"
-            />
+            <InputTextColumn field="name" />
+            <InputTextColumn field="family" />
             <InputTextColumn
                 field="nationalCode"
-                columnClassName="col-md-6 col-sm-12 pb-4"
                 inputStyle={{ textAlign: "left" }}
             />
             <InputTextColumn
                 type="number"
                 field="mobile"
-                columnClassName="col-md-6 col-sm-12 pb-4"
                 inputStyle={{ textAlign: "left" }}
             />
-            <InputTextColumn
-                field="email"
-                columnClassName="col-md-6 col-sm-12 pb-4"
-                inputStyle={{ textAlign: "left" }}
-            />
+            <InputTextColumn field="email" inputStyle={{ textAlign: "left" }} />
             <div className="col-md-3 col-sm-12 pb-4">
                 <label className="form-label">{strings.gender}</label>
                 <InputRadioColumn field="male" name="gender" checked={true} />
@@ -93,12 +81,12 @@ const AddUser = () => {
                     field="administrator"
                     name="type"
                     checked={true}
-                    onChange={(e) => funcs.onType("administrator")}
+                    onChange={() => funcs.onType("administrator")}
                 />
                 <InputRadioColumn
                     field="user"
                     name="type"
-                    onChange={(e) => funcs.onType("user")}
+                    onChange={() => funcs.onType("user")}
                 />
             </div>
             <input type="hidden" {...form.register(`city`)} />
@@ -156,6 +144,8 @@ const AddUser = () => {
                 strings={selectCityModal}
                 useForm={selectCityUseForm}
                 funcs={funcs}
+                provinces={ls?.pageProps?.provinces}
+                cities={ls?.pageProps?.cities}
             />
         </FormPage>
     );

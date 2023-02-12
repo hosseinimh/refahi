@@ -90,6 +90,14 @@ const setEquipmentTypeId = (equipmentTypeId) => {
 };
 
 const fillForm = async () => {
+    _dispatch(setLoadingAction(true));
+
+    await fetchPageData();
+
+    _dispatch(setLoadingAction(false));
+};
+
+const fetchPageData = async () => {
     let result = await _entity.get(_equipmentTypeId);
 
     if (result === null) {

@@ -29,7 +29,7 @@ class EquipmentTypeController extends Controller
 
     public function show(Model $model): HttpJsonResponse
     {
-        return $this->onItem($this->service->get($model->id));
+        return $this->onItem($model);
     }
 
     public function store(StoreRequest $request): HttpJsonResponse

@@ -135,6 +135,8 @@ export const addUserPage = {
     user: "کاربر",
     city: "شهر",
     selectCity: "انتخاب شهر",
+    province: "استان",
+    modalCity: "شهر",
     noCity: "یک شهر را انتخاب نمایید.",
     noCityError: "لطفا شهر کاربر را انتخاب نمایید.",
     submitted: "افزودن کاربر با موفقیت انجام گردید.",
@@ -164,6 +166,8 @@ export const editUserPage = {
     user: "کاربر",
     city: "شهر",
     selectCity: "انتخاب شهر",
+    province: "استان",
+    modalCity: "شهر",
     noCity: "یک شهر را انتخاب نمایید.",
     noCityError: "لطفا شهر کاربر را انتخاب نمایید.",
     submitted: "ویرایش کاربر با موفقیت انجام گردید.",
@@ -190,8 +194,6 @@ export const citiesPage = {
 
 export const selectCityModal = {
     modalTitle: "انتخاب شهر",
-    province: "استان",
-    city: "شهر",
     modalOkButton: "انتخاب",
 };
 

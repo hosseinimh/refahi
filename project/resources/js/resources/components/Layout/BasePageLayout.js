@@ -105,7 +105,6 @@ const BasePageLayout = ({
         dispatch(setPageAction(page));
         dispatch(setPagePropsAction({ strings, useForm }));
         dispatch(setRenderMessageAction());
-        dispatch(setLoadingAction(false));
 
         if (ms?.messageField || ms?.messageRender) {
             dispatch(clearMessageAction());

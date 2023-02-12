@@ -87,6 +87,20 @@ function Sidebar() {
         }
     };
 
+    const toggleLink = (e) => {
+        e.preventDefault();
+
+        const element = e.target.parentNode;
+
+        if (element.classList.contains("show")) {
+            element.classList.remove("show");
+            element.setAttribute("aria-expanded", false);
+        } else {
+            element.classList.add("show");
+            element.setAttribute("aria-expanded", true);
+        }
+    };
+
     const onLogout = () => {
         dispatch(fetchLogoutAction());
     };
@@ -99,7 +113,11 @@ function Sidebar() {
     const renderAdminLinks = () => (
         <>
             <li className="nav-group" aria-expanded="false">
-                <a className="nav-link nav-group-toggle" href="#">
+                <a
+                    className="nav-link nav-group-toggle"
+                    onClick={(e) => toggleLink(e)}
+                    href="#"
+                >
                     <svg className="nav-icon">
                         <use
                             xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-group`}
@@ -145,7 +163,11 @@ function Sidebar() {
                 </ul>
             </li>
             <li className="nav-group" aria-expanded="false">
-                <a className="nav-link nav-group-toggle">
+                <a
+                    className="nav-link nav-group-toggle"
+                    onClick={(e) => toggleLink(e)}
+                    href="#"
+                >
                     <svg className="nav-icon">
                         <use
                             xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-group`}
@@ -191,7 +213,11 @@ function Sidebar() {
                 </ul>
             </li>
             <li className="nav-group" aria-expanded="false">
-                <a className="nav-link nav-group-toggle">
+                <a
+                    className="nav-link nav-group-toggle"
+                    onClick={(e) => toggleLink(e)}
+                    href="#"
+                >
                     <svg className="nav-icon">
                         <use
                             xlinkHref={`${vendorsPath}/@coreui/icons/svg/free.svg#cil-group`}

@@ -10,6 +10,10 @@ export class City extends Entity {
         return await this.handlePost(API_URLS.FETCH_CITIES + "/" + provinceId);
     }
 
+    async getAllWithProvinces() {
+        return await this.handlePost(API_URLS.FETCH_CITIES_ALL);
+    }
+
     async get(id) {
         return await this.handlePost(API_URLS.FETCH_CITY + "/" + id);
     }

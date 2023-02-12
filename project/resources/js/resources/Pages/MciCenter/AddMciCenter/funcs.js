@@ -31,7 +31,7 @@ export const onLoad = (params) => {
     _dispatch(setTitleAction(strings._title));
 
     setCityId(params?.cityId);
-    fetchCity();
+    fetchPageData();
 
     _useForm.setValue("longitude", "0");
     _useForm.setValue("latitude", "0");
@@ -85,7 +85,7 @@ const setCityId = (cityId) => {
     _cityId = !isNaN(cityId) && cityId > 0 ? cityId : 0;
 };
 
-const fetchCity = async () => {
+const fetchPageData = async () => {
     if (_cityId <= 0) {
         _dispatch(
             setMessageAction(

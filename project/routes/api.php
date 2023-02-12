@@ -21,6 +21,7 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
     Route::post('dashboard/review_admin', [DashboardController::class, 'reviewAdmin']);
 
     Route::post('users', [UserController::class, 'index']);
+    Route::post('users/show/cities/{model}', [UserController::class, 'showAdministratorWithAllCities']);
     Route::post('users/show/{model}', [UserController::class, 'showAdministrator']);
     Route::post('users/store/{city}', [UserController::class, 'storeUser']);
     Route::post('users/store', [UserController::class, 'storeAdministrator']);
@@ -32,6 +33,7 @@ Route::middleware(['auth:sanctum', 'auth.administrator'])->group(function () {
     Route::post('provinces', [ProvinceController::class, 'index']);
 
     Route::post('cities/show/{model}', [CityController::class, 'show']);
+    Route::post('cities/all', [CityController::class, 'indexAll']);
     Route::post('cities/{province}', [CityController::class, 'index']);
 
     Route::post('mci_centers/show/{model}', [MciCenterController::class, 'show']);

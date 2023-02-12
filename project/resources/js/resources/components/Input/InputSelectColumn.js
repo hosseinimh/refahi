@@ -11,7 +11,7 @@ const InputSelectColumn = ({
     handleChange,
     selectStyle = {},
     size = 1,
-    columnClassName = "col-md-4 col-sm-12 pb-4",
+    columnClassName = "col-md-3 col-12 pb-4",
     noSelect = false,
     multiple = false,
     selectedValues = null,

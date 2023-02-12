@@ -93,18 +93,26 @@ const addUserSchema = yup.object().shape({
         .required(
             validation.requiredMessage.replace(":field", strings.nationalCode)
         ),
-    personnelNo: yup
-        .string(validation.stringMessage.replace(":field", strings.personnelNo))
-        .matches(
-            /^[0-9]{5,10}$/,
-            validation.betweenDigitsMessage
-                .replace(":field", strings.personnelNo)
-                .replace(":digit1", "3")
-                .replace(":digit2", "50")
-        )
-        .required(
-            validation.requiredMessage.replace(":field", strings.personnelNo)
-        ),
+    personnelNo: yup.string().when("user", {
+        is: "on",
+        then: yup
+            .string(
+                validation.stringMessage.replace(":field", strings.personnelNo)
+            )
+            .matches(
+                /^[0-9]{5,10}$/,
+                validation.betweenDigitsMessage
+                    .replace(":field", strings.personnelNo)
+                    .replace(":digit1", "5")
+                    .replace(":digit2", "50")
+            )
+            .required(
+                validation.requiredMessage.replace(
+                    ":field",
+                    strings.personnelNo
+                )
+            ),
+    }),
     mobile: yup
         .string(validation.stringMessage.replace(":field", strings.mobile))
         .matches(

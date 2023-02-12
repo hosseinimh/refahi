@@ -89,6 +89,14 @@ const setPlaceTypeId = (placeTypeId) => {
 };
 
 const fillForm = async () => {
+    _dispatch(setLoadingAction(true));
+
+    await fetchPageData();
+
+    _dispatch(setLoadingAction(false));
+};
+
+const fetchPageData = async () => {
     let result = await _entity.get(_placeTypeId);
 
     if (result === null) {
@@ -100,6 +108,7 @@ const fillForm = async () => {
                 false
             )
         );
+        _dispatch(setLoadingAction(false));
         _navigate(_callbackUrl);
 
         return null;

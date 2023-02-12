@@ -1,23 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { general } from "../../../constants/strings";
-import { City, Province } from "../../../http/entities";
-import { setLoadingAction } from "../../../state/layout/layoutActions";
 import { InputSelectColumn, Modal } from "../";
 
-const SelectCityModal = ({ id, strings, useForm, funcs }) => {
-    const dispatch = useDispatch();
+const SelectCityModal = ({
+    id,
+    strings,
+    useForm,
+    funcs,
+    provinces,
+    cities,
+    province = null,
+    city = null,
+}) => {
     const ls = useSelector((state) => state.layoutReducer);
-    const [provinces, setProvinces] = useState([]);
-    const [cities, setCities] = useState([]);
+    const [provinceCities, setProvinceCities] = useState([]);
 
     useEffect(() => {
+        if (!cities) {
+            return;
+        }
+
         useForm.setValue("province", 11);
-        fetchCities(11);
-    }, [provinces]);
-
-    useEffect(() => {
+        onProvince(11);
         document
             .getElementById(id)
             .addEventListener("shown.coreui.modal", () => {
@@ -25,46 +31,28 @@ const SelectCityModal = ({ id, strings, useForm, funcs }) => {
                 province.focus();
                 province.scrollTo(0, 230);
 
-                const city = document.getElementById("city");
+                const city = document.getElementById("modalCity");
                 city.focus();
-                useForm.setValue("city", city.options[0].value);
             });
+    }, [cities]);
 
-        fetchProvinces();
+    useEffect(() => {
+        if (province) {
+            useForm?.setValue("province", province);
+        }
+        console.log(city);
+        if (city) {
+            console.log(city);
+            //useForm?.setValue("modalCity", city);
+        }
     }, []);
 
-    const fetchProvinces = async () => {
-        dispatch(setLoadingAction(true));
-
-        const province = new Province();
-        let result = await province.getAll();
-
-        if (result !== null) {
-            setProvinces(result.items);
-        }
-
-        dispatch(setLoadingAction(false));
-    };
-
-    const fetchCities = async (provinceId) => {
-        dispatch(setLoadingAction(true));
-
-        const city = new City();
-        let result = await city.getAll(provinceId);
-
-        if (result !== null) {
-            setCities(result.items);
-        }
-
-        dispatch(setLoadingAction(false));
-    };
-
-    const onProvince = (e) => {
-        fetchCities(e?.target?.value);
+    const onProvince = (id) => {
+        setProvinceCities(cities.filter((city) => city.provinceId == id));
     };
 
     return (
-        <Modal id={id} errors={useForm.formState.errors}>
+        <Modal id={id}>
             <div className="modal-header">
                 <h5 className="modal-title">{strings.modalTitle}</h5>
                 <button
@@ -81,23 +69,20 @@ const SelectCityModal = ({ id, strings, useForm, funcs }) => {
                         field="province"
                         size={5}
                         columnClassName={"col-md-6 col-sm-12 pb-4"}
-                        strings={strings}
-                        register={useForm.register}
-                        setValue={useForm.setValue}
                         items={provinces}
                         valueItem={"name"}
+                        useForm={useForm}
                         selectedValues={"11"}
-                        handleChange={onProvince}
+                        handleChange={(e) => onProvince(e.target.value)}
                     />
                     <InputSelectColumn
-                        field="city"
+                        field="modalCity"
                         size={5}
                         columnClassName={"col-md-6 col-sm-12 pb-4"}
-                        strings={strings}
-                        register={useForm.register}
-                        setValue={useForm.setValue}
-                        items={cities}
+                        items={provinceCities}
                         valueItem={"name"}
+                        useForm={useForm}
+                        selectedValues={"137"}
                     />
                 </div>
             </div>

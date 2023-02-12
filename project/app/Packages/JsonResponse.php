@@ -87,9 +87,14 @@ class JsonResponse
         return $this->handleResult(false, $data);
     }
 
-    public function collection($items)
+    public function resource(mixed $item)
     {
-        return $this->entityResource::collection($items);
+        return $this->entityResource ? new $this->entityResource($item) : $item;
+    }
+
+    public function collection(mixed $items)
+    {
+        return $this->entityResource ? $this->entityResource::collection($items) : $items;
     }
 
     private function jsonResponse($data)

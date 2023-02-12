@@ -40,30 +40,18 @@ const EditUser = () => {
             useForm={form}
             modals={[{ id: "select-city-modal", useForm: selectCityUseForm }]}
         >
-            <InputTextColumn
-                field="name"
-                columnClassName="col-md-6 col-sm-12 pb-4"
-            />
-            <InputTextColumn
-                field="family"
-                columnClassName="col-md-6 col-sm-12 pb-4"
-            />
+            <InputTextColumn field="name" />
+            <InputTextColumn field="family" />
             <InputTextColumn
                 field="nationalCode"
-                columnClassName="col-md-6 col-sm-12 pb-4"
                 inputStyle={{ textAlign: "left" }}
             />
             <InputTextColumn
                 type="number"
                 field="mobile"
-                columnClassName="col-md-6 col-sm-12 pb-4"
                 inputStyle={{ textAlign: "left" }}
             />
-            <InputTextColumn
-                field="email"
-                columnClassName="col-md-6 col-sm-12 pb-4"
-                inputStyle={{ textAlign: "left" }}
-            />
+            <InputTextColumn field="email" inputStyle={{ textAlign: "left" }} />
             <div className="col-md-3 col-sm-12 pb-4">
                 <label className="form-label">{strings.gender}</label>
                 <InputRadioColumn field="male" name="gender" checked={true} />
@@ -142,6 +130,9 @@ const EditUser = () => {
                 strings={selectCityModal}
                 useForm={selectCityUseForm}
                 funcs={funcs}
+                provinces={ls?.pageProps?.provinces}
+                cities={ls?.pageProps?.cities}
+                city={form.getValues("city")}
             />
         </FormPage>
     );

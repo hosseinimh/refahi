@@ -40,19 +40,7 @@ export const onLoad = (params) => {
             ? `${basePath}/users`
             : basePath;
 
-    if (_userId > 0) {
-        fillForm();
-    } else {
-        _dispatch(
-            setMessageAction(
-                general.itemNotFound,
-                MESSAGE_TYPES.ERROR,
-                MESSAGE_CODES.ITEM_NOT_FOUND,
-                false
-            )
-        );
-        _navigate(_callbackUrl);
-    }
+    fillForm();
 };
 
 export const onLayoutState = () => {};
@@ -106,9 +94,32 @@ const setUserId = (userId) => {
 };
 
 const fillForm = async () => {
+    _dispatch(setLoadingAction(true));
+
+    await fetchPageData();
+
+    _dispatch(setLoadingAction(false));
+};
+
+const fetchPageData = async () => {
+    if (_userId <= 0) {
+        _dispatch(
+            setMessageAction(
+                general.itemNotFound,
+                MESSAGE_TYPES.ERROR,
+                MESSAGE_CODES.ITEM_NOT_FOUND,
+                false
+            )
+        );
+        _dispatch(setLoadingAction(false));
+        _navigate(_callbackUrl);
+
+        return null;
+    }
+
     let result =
         _lsUser?.role === USER_ROLES.ADMINISTRATOR
-            ? await _entity.getAdmininistrator(_userId)
+            ? await _entity.getAdministrator(_userId)
             : await _entity.getUser();
 
     if (result === null) {

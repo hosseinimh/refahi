@@ -24,9 +24,19 @@ class Controller extends BaseController
         return $this->response->itemResponse($item);
     }
 
-    public function onItems(mixed $items, $count = 0)
+    public function onItems(mixed $items, int $count = 0)
     {
-        $count = $count > 0 ? $count : count($items);
+        if ($count <= 0) {
+            if (is_array($items)) {
+                if (array_key_exists('items', $items) && is_object($items['items'])) {
+                    $count = count($items['items']);
+                } else {
+                    $count = count($items);
+                }
+            } else {
+                $count = 0;
+            }
+        }
 
         return $this->response->itemsResponse($items, $count);
     }
@@ -61,7 +71,12 @@ class Controller extends BaseController
         return $this->response->errorResponse($data);
     }
 
-    public function collection($items)
+    public function resource(mixed $item)
+    {
+        return $this->response->resource($item);
+    }
+
+    public function collection(mixed $items)
     {
         return $this->response->collection($items);
     }

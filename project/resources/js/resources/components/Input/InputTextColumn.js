@@ -5,7 +5,7 @@ const InputTextColumn = ({
     field,
     type = "text",
     useForm,
-    columnClassName = "col-md-4 col-sm-12 pb-4",
+    columnClassName = "col-md-3 col-12 pb-4",
     strings = null,
     icon = null,
     inputStyle = {},
